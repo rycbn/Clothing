@@ -129,6 +129,7 @@ extension SummaryViewController: UICollectionViewDataSourcePrefetching {
             guard let url = URL(string: product.imageURL) else {
                 return
             }
+            
             product.task = self.downloader.download(url) { url in
                 product.task = nil
                 if let url = url, let data = try? Data(contentsOf: url) {

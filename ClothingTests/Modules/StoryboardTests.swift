@@ -11,16 +11,19 @@ import XCTest
 
 class StoryboardTests: XCTestCase {
 
+    var sut: UIStoryboard!
+
     override func setUp() {
         super.setUp()
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        sut = storyboard
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
 
     func test_ShouldSetMainStoryboard() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        XCTAssertNotNil(storyboard)
+        XCTAssertNotNil(sut)
     }
 }
