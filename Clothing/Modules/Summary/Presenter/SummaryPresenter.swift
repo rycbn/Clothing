@@ -27,6 +27,10 @@ extension SummaryPresenter: SummaryModuleInterface {
         self.summaryInteractorInput?.findSummary()
     }
 
+    func requestAlert() {
+        self.summaryRouter?.showAlert()
+    }
+
 }
 
 // MARK: - SummaryInteractorOutput

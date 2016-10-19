@@ -51,7 +51,7 @@ class SummaryViewController: UIViewController {
 extension SummaryViewController: SummaryViewInterface {
 
     func showError() {
-
+        self.eventHandler?.requestAlert()
     }
 
     func showDisplay(with data: [SummaryProduct]) {

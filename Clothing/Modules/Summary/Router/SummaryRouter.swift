@@ -28,4 +28,13 @@ class SummaryRouter {
         let viewController = storyboard.instantiateViewController(withIdentifier: "SummaryStoryboardID") as! SummaryViewController
         return viewController
     }
+
+    func showAlert() {
+        let title = "Sorry"
+        let message = "Something wrong! Please try again!"
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertViewController.addAction(okAction)
+        self.summaryViewController?.present(alertViewController, animated: true, completion: nil)
+    }
 }
