@@ -101,15 +101,22 @@ extension SummaryViewController: UICollectionViewDelegate {
 
         let product = self.products[indexPath.item]
 
-        cell.productNameTextLabel?.text = product.name
-        cell.priceTextLabel?.text = product.currencyAmount
-        cell.imageView?.image = product.image
+        cell.configure(for: product.name, product.currencyAmount, product.image)
 
         if product.task == nil && product.image == nil {
             cell.indicator?.startAnimating()
             self.collectionView(collectionView, prefetchItemsAt: [indexPath])
         } else {
             cell.indicator?.stopAnimating()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        let product = self.products[indexPath.item]
+
+        if product.task == nil && product.image != nil {
+            product.image = nil
         }
     }
 }
@@ -157,10 +164,9 @@ extension SummaryViewController: CollectionViewCellLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
 
-        //let product = self.products[indexPath.item]
         let annotationPadding: CGFloat = 4.0
         let annotationHeaderHeight: CGFloat = 17.0
-        let productNameHeight: CGFloat = 60.0
+        let productNameHeight: CGFloat = 55.0
         let height =  annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
         
         return height
