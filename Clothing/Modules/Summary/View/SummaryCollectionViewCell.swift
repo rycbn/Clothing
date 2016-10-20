@@ -10,13 +10,21 @@ import UIKit
 
 class SummaryCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var productNameTextLabel: UILabel!
     @IBOutlet weak var priceTextLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var imageViewHeightlayoutConstraint: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        if let attributes = layoutAttributes as? SummaryCollectionViewLayoutAttributes {
+            imageViewHeightlayoutConstraint.constant = attributes.imageHeight
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SummaryViewController: UIViewController {
 
@@ -30,7 +31,7 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureView()
+        self.title = "Clothing"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,15 +39,15 @@ class SummaryViewController: UIViewController {
         self.eventHandler?.updateView()
     }
 
-    func configureView() {
-        self.title = "Clothing"
-
+    func configureDataSourceDelegate() {
         self.mainView.collectionView.delegate = self
         self.mainView.collectionView.dataSource = self
         self.mainView.collectionView.prefetchDataSource = self
+        if let layout = self.mainView.collectionView.collectionViewLayout as? SummaryCollectionViewLayout {
+            layout.delegate = self
+        }
     }
 }
-
 // MARK: - SummaryViewInterface
 extension SummaryViewController: SummaryViewInterface {
 
@@ -60,10 +61,10 @@ extension SummaryViewController: SummaryViewInterface {
     }
 
     func reloadEntries() {
+        self.configureDataSourceDelegate()
         self.mainView.collectionView.reloadData()
     }
 }
-
 // MARK: - Collection view data source
 extension SummaryViewController: UICollectionViewDataSource {
 
@@ -72,20 +73,21 @@ extension SummaryViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.products.count == 0 {
+
+        guard self.products.count != 0 else {
             return 0
-        } else {
-            return self.products.count
         }
+
+        return self.products.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellID", for: indexPath) as! SummaryCollectionViewCell
+        
         return cell
     }
 }
-
 // MARK: - Collection view delegate 
 extension SummaryViewController: UICollectionViewDelegate {
 
@@ -95,7 +97,7 @@ extension SummaryViewController: UICollectionViewDelegate {
             fatalError("Error with register cell")
         }
 
-        let product = self.products[indexPath.row]
+        let product = self.products[indexPath.item]
 
         cell.productNameTextLabel?.text = product.name
         cell.priceTextLabel?.text = product.currencyAmount
@@ -109,14 +111,13 @@ extension SummaryViewController: UICollectionViewDelegate {
         }
     }
 }
-
 // MARK: - Collection view data source prefetching
 extension SummaryViewController: UICollectionViewDataSourcePrefetching {
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
 
-            let product = self.products[indexPath.row]
+            let product = self.products[indexPath.item]
 
             guard product.image == nil else {
                 return
@@ -140,4 +141,27 @@ extension SummaryViewController: UICollectionViewDataSourcePrefetching {
         }
     }
 }
+// MARK: - Collection view custom layout delegate 
+extension SummaryViewController: CollectionViewCellLayoutDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
+
+        let defaultImageSize = CGSize(width: 180, height: 270)
+        let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
+        let rect = AVMakeRect(aspectRatio: defaultImageSize, insideRect: boundingRect)
+
+        return rect.size.height
+    }
+
+    func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
+
+        let product = self.products[indexPath.item]
+        let annotationPadding: CGFloat = 4.0
+        let annotationHeaderHeight: CGFloat = 17.0
+        let font = UIFont(name: "HelveticaNeue-Medium", size: 13)!
+        let productNameHeight = product.heightForName(font, width: width)
+        let height =  annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
+        
+        return height
+    }
+}

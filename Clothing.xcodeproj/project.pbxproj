@@ -42,7 +42,8 @@
 		5E11A0751DB7D0F800FC4AA9 /* UtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E11A0701DB7D0F800FC4AA9 /* UtilityTests.swift */; };
 		5E11A0771DB7D16C00FC4AA9 /* SummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E11A0761DB7D16C00FC4AA9 /* SummaryViewControllerTests.swift */; };
 		5E11A0791DB7D48500FC4AA9 /* SummaryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E11A0781DB7D48500FC4AA9 /* SummaryViewTests.swift */; };
-		5EF1C4DF1DB7B90600D15144 /* SummaryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1C4DE1DB7B90600D15144 /* SummaryCollectionViewLayout.swift */; };
+		5E6B7BF51DB8ABF500B14365 /* SummaryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BF41DB8ABF500B14365 /* SummaryCollectionViewLayout.swift */; };
+		5E6B7BF71DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BF61DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +109,8 @@
 		5E11A0731DB7D0F800FC4AA9 /* subsituteTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = subsituteTests.playground; sourceTree = "<group>"; };
 		5E11A0761DB7D16C00FC4AA9 /* SummaryViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		5E11A0781DB7D48500FC4AA9 /* SummaryViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewTests.swift; sourceTree = "<group>"; };
-		5EF1C4DE1DB7B90600D15144 /* SummaryCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5E6B7BF41DB8ABF500B14365 /* SummaryCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5E6B7BF61DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,10 +299,10 @@
 		5E0B5B901DB606C800565BAC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5E6B7BF31DB8ABF500B14365 /* Layout */,
 				5E0B5B911DB606C800565BAC /* SummaryView.swift */,
 				5E0B5B921DB606C800565BAC /* SummaryViewController.swift */,
 				5E08FC131DB7644B004F7D8C /* SummaryCollectionViewCell.swift */,
-				5EF1C4DE1DB7B90600D15144 /* SummaryCollectionViewLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -402,6 +404,15 @@
 				5E11A0731DB7D0F800FC4AA9 /* subsituteTests.playground */,
 			);
 			path = Playground;
+			sourceTree = "<group>";
+		};
+		5E6B7BF31DB8ABF500B14365 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				5E6B7BF41DB8ABF500B14365 /* SummaryCollectionViewLayout.swift */,
+				5E6B7BF61DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,10 +560,11 @@
 				5E0B5B941DB606C800565BAC /* SummaryInteractor.swift in Sources */,
 				5E0B5BA71DB609E000565BAC /* NetworkManager.swift in Sources */,
 				5E0B5B991DB606C800565BAC /* SummaryProtocol.swift in Sources */,
-				5EF1C4DF1DB7B90600D15144 /* SummaryCollectionViewLayout.swift in Sources */,
+				5E6B7BF51DB8ABF500B14365 /* SummaryCollectionViewLayout.swift in Sources */,
 				5E0B5BCD1DB6290E00565BAC /* Mapping.swift in Sources */,
 				5E0B5B981DB606C800565BAC /* SummaryPresenter.swift in Sources */,
 				5E0B5BCF1DB6292400565BAC /* ProductParser.swift in Sources */,
+				5E6B7BF71DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift in Sources */,
 				5E0B5BAE1DB610C300565BAC /* Clothing.xcdatamodeld in Sources */,
 				5E0B5BA81DB609E000565BAC /* RootRouter.swift in Sources */,
 				5E0B5BD11DB67FEC00565BAC /* SummaryProduct.swift in Sources */,

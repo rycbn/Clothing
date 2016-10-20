@@ -17,4 +17,10 @@ class SummaryProduct {
     var indicator: UIActivityIndicatorView!
     var image: UIImage!
     var task: URLSessionTask!
+
+    func heightForName(_ font: UIFont, width: CGFloat) -> CGFloat {
+        let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
+        let rect = NSString(string: name).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        return ceil(rect.height)
+    }
 }
