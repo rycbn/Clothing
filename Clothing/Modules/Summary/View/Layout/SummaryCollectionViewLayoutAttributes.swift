@@ -10,7 +10,7 @@ import UIKit
 
 class SummaryCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
 
-    var imageHeight: CGFloat = 270.0
+    var imageHeight: CGFloat = 0.0
 
     override func copy(with zone: NSZone? = nil) -> Any {
         let copy = super.copy(with: zone) as! SummaryCollectionViewLayoutAttributes

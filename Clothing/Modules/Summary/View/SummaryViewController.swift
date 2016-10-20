@@ -16,14 +16,14 @@ class SummaryViewController: UIViewController {
     var products: [SummaryProduct] = []
 
     lazy var configuration: URLSessionConfiguration = {
-        $0.allowsCellularAccess = true
+        $0.allowsCellularAccess = false
         $0.urlCache = nil
         return $0
     }(URLSessionConfiguration.ephemeral)
 
     lazy var downloader: NetworkDownloader = {
-        return NetworkDownloader(configuration: self.configuration)
-    }()
+        return $0
+    }(NetworkDownloader(configuration: self.configuration))
 
     var mainView: SummaryView {
         return view as! SummaryView
@@ -32,12 +32,15 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Clothing"
+        self.configureDataSourceDelegate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.eventHandler?.updateView()
     }
+
+    var didSetup = false
 
     func configureDataSourceDelegate() {
         self.mainView.collectionView.delegate = self
@@ -61,7 +64,6 @@ extension SummaryViewController: SummaryViewInterface {
     }
 
     func reloadEntries() {
-        self.configureDataSourceDelegate()
         self.mainView.collectionView.reloadData()
     }
 }
@@ -146,7 +148,7 @@ extension SummaryViewController: CollectionViewCellLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
 
-        let defaultImageSize = CGSize(width: 180, height: 270)
+        let defaultImageSize = CGSize(width: 150, height: 240)
         let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
         let rect = AVMakeRect(aspectRatio: defaultImageSize, insideRect: boundingRect)
 
@@ -155,11 +157,10 @@ extension SummaryViewController: CollectionViewCellLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
 
-        let product = self.products[indexPath.item]
+        //let product = self.products[indexPath.item]
         let annotationPadding: CGFloat = 4.0
         let annotationHeaderHeight: CGFloat = 17.0
-        let font = UIFont(name: "HelveticaNeue-Medium", size: 13)!
-        let productNameHeight = product.heightForName(font, width: width)
+        let productNameHeight: CGFloat = 60.0
         let height =  annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
         
         return height

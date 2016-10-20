@@ -37,22 +37,23 @@
                                                             </constraints>
                                                         </imageView>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mjL-55-bIT"/>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="product name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-PJ-lhG">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="product name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-PJ-lhG">
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-FR-w4v">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-FR-w4v">
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="m8a-Ws-fdU"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="Gkb-FR-w4v" firstAttribute="top" relation="lessThanOrEqual" secondItem="lYA-PJ-lhG" secondAttribute="bottom" constant="25" id="39E-YW-uNT"/>
                                                         <constraint firstItem="LuW-K0-5E7" firstAttribute="leading" secondItem="B2R-q1-BaO" secondAttribute="leading" id="71O-ag-cMi"/>
                                                         <constraint firstAttribute="trailing" secondItem="LuW-K0-5E7" secondAttribute="trailing" id="AVy-9A-8Zp"/>
                                                         <constraint firstItem="LuW-K0-5E7" firstAttribute="top" secondItem="B2R-q1-BaO" secondAttribute="top" id="N8y-je-rg0"/>

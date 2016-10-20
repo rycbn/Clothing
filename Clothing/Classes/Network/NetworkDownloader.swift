@@ -13,12 +13,12 @@ let isMain = false // try false to move delegate methods onto a background threa
 typealias NetworkDownloaderCompletion = (URL!) -> ()
 
 class NetworkDownloader: NSObject {
-    let config : URLSessionConfiguration
+    let config: URLSessionConfiguration
     let queue = OperationQueue()
 
-    lazy var session : URLSession = {
-        let queue = (isMain ? .main : self.queue)
-        return URLSession(configuration:self.config, delegate:NetworkDownloaderDelegate(), delegateQueue:queue)
+    lazy var session: URLSession = {
+        let queue = (isMain ? .main: self.queue)
+        return URLSession(configuration: self.config, delegate: NetworkDownloaderDelegate(), delegateQueue: queue)
     }()
 
     init(configuration config:URLSessionConfiguration) {
@@ -27,18 +27,20 @@ class NetworkDownloader: NSObject {
     }
 
     @discardableResult
-    func download(_ url:URL, completionHandler ch : @escaping NetworkDownloaderCompletion) -> URLSessionTask {
-        let req = NSMutableURLRequest(url:url)
-        URLProtocol.setProperty(ch as Any, forKey:"ch", in:req)
-        let task = self.session.downloadTask(with:req as URLRequest)
+    func download(_ url: URL, completionHandler ch: @escaping NetworkDownloaderCompletion) -> URLSessionTask {
+
+        let request = NSMutableURLRequest(url: url)
+        URLProtocol.setProperty(ch as Any, forKey: "ch", in: request)
+        let task = self.session.downloadTask(with: request as URLRequest)
         task.resume()
+
         return task
     }
 
-    private class NetworkDownloaderDelegate : NSObject, URLSessionDownloadDelegate {
+    private class NetworkDownloaderDelegate: NSObject, URLSessionDownloadDelegate {
         func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
-            let req = downloadTask.originalRequest!
-            let ch = URLProtocol.property(forKey:"ch", in:req) as! NetworkDownloaderCompletion
+            let request = downloadTask.originalRequest!
+            let ch = URLProtocol.property(forKey: "ch", in: request) as! NetworkDownloaderCompletion
             if isMain {
                 ch(url)
             } else {
@@ -53,7 +55,7 @@ class NetworkDownloader: NSObject {
     }
 
     deinit {
-        print("farewell from MyDownloader")
+        print("farewell from NetworkDownloader")
         self.session.invalidateAndCancel()
     }
     
