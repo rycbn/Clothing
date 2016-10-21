@@ -20,7 +20,7 @@ class SummaryViewController: UIViewController {
 
     lazy var configuration : URLSessionConfiguration = {
         let config = URLSessionConfiguration.ephemeral
-        config.allowsCellularAccess = false
+        config.allowsCellularAccess = true
         config.urlCache = nil
         return config
     }()
