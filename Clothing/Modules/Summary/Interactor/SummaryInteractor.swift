@@ -40,7 +40,7 @@ class SummaryInteractor {
     }
 
 }
-// MARK:- HomeInteractorInput
+// MARK:- SummaryInteractorInput
 extension SummaryInteractor: SummaryInteractorInput {
     func findSummary() { 
         self.summaryDataManager.loadSummary { [weak self] (products, error) in

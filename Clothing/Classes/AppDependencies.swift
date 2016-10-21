@@ -42,5 +42,9 @@ class AppDependencies: NSObject {
         summaryDataManager.networkManager = networkManager
         summaryDataManager.coreDataStore = coreDataStore
 
+        // Summary Detail Module
+        let summaryDetailRouter = SummaryDetailRouter()
+
+        self.summaryRouter.summaryDetailRouter = summaryDetailRouter
     }
 }

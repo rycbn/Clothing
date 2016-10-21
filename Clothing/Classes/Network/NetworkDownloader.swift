@@ -6,22 +6,31 @@
 //  Copyright © 2016 rycbn. All rights reserved.
 //
 
+//
+//  NetworkDownloader.swift
+//  Clothing
+//
+//  Created by Roger Yong on 17/10/2016.
+//  Copyright © 2016 rycbn. All rights reserved.
+//
+
 import UIKit
 
 let isMain = false // try false to move delegate methods onto a background thread
 
-typealias NetworkDownloaderCompletion = (URL!) -> ()
-
 class NetworkDownloader: NSObject {
+
+    typealias NetworkDownloaderCompletion = (URL?) -> ()
+
     let config: URLSessionConfiguration
     let queue = OperationQueue()
 
     lazy var session: URLSession = {
-        let queue = (isMain ? .main: self.queue)
-        return URLSession(configuration: self.config, delegate: NetworkDownloaderDelegate(), delegateQueue: queue)
+        let q = (isMain ? .main: self.queue)
+        return URLSession(configuration: self.config, delegate: NetworkDownloader.NetworkDownloaderDelegate(), delegateQueue: q)
     }()
 
-    init(configuration config:URLSessionConfiguration) {
+    init(configuration config: URLSessionConfiguration) {
         self.config = config
         super.init()
     }
@@ -38,9 +47,15 @@ class NetworkDownloader: NSObject {
     }
 
     private class NetworkDownloaderDelegate: NSObject, URLSessionDownloadDelegate {
+
         func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
-            let request = downloadTask.originalRequest!
+
+            guard let request = downloadTask.originalRequest else {
+                return
+            }
+
             let ch = URLProtocol.property(forKey: "ch", in: request) as! NetworkDownloaderCompletion
+
             if isMain {
                 ch(url)
             } else {
@@ -49,6 +64,7 @@ class NetworkDownloader: NSObject {
                 }
             }
         }
+
         deinit {
             print("farewell from Delegate")
         }

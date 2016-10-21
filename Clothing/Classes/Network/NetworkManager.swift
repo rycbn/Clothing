@@ -48,7 +48,7 @@ class NetworkManager {
             guard let data = data else {
                 return completionHandler(nil, NetworkError.data)
             }
-            self.parseringJSON(data, completionHandler: completionHandler)
+            NetworkManager.parseringJSON(data, completionHandler: completionHandler)
         }
 
         task.resume()
@@ -56,7 +56,7 @@ class NetworkManager {
         return task
     }
 
-    func parseringJSON(_ data: Data, completionHandler: CompletionHandler) {
+    class func parseringJSON(_ data: Data, completionHandler: CompletionHandler) {
         do {
             let parsedObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject?
             completionHandler(parsedObject, nil)

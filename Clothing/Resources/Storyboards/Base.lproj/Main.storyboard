@@ -104,6 +104,24 @@
             </objects>
             <point key="canvasLocation" x="226" y="-622"/>
         </scene>
+        <!--Summary Detail View Controller-->
+        <scene sceneID="ScS-kl-uxY">
+            <objects>
+                <viewController storyboardIdentifier="SummaryDetailStoryboardID" id="ghi-VH-GMb" customClass="SummaryDetailViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Us4-Hi-zEj"/>
+                        <viewControllerLayoutGuide type="bottom" id="XU3-75-zab"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2y7-va-uYl" customClass="SummaryDetailView" customModule="Clothing" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1o-rW-lZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937" y="-620"/>
+        </scene>
     </scenes>
     <resources>
         <image name="whitecolor" width="240" height="240"/>

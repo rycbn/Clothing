@@ -11,23 +11,23 @@ import AVFoundation
 
 class SummaryViewController: UIViewController {
 
-    var eventHandler: SummaryModuleInterface?
-
-    var products: [SummaryProduct] = []
-
-    lazy var configuration: URLSessionConfiguration = {
-        $0.allowsCellularAccess = false
-        $0.urlCache = nil
-        return $0
-    }(URLSessionConfiguration.ephemeral)
-
-    lazy var downloader: NetworkDownloader = {
-        return $0
-    }(NetworkDownloader(configuration: self.configuration))
-
     var mainView: SummaryView {
         return view as! SummaryView
     }
+
+    var eventHandler: SummaryModuleInterface?
+    var products: [SummaryProduct] = []
+
+    lazy var configuration : URLSessionConfiguration = {
+        let config = URLSessionConfiguration.ephemeral
+        config.allowsCellularAccess = false
+        config.urlCache = nil
+        return config
+    }()
+
+    lazy var downloader : NetworkDownloader = {
+        return NetworkDownloader(configuration:self.configuration)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,6 @@ class SummaryViewController: UIViewController {
         super.viewWillAppear(animated)
         self.eventHandler?.updateView()
     }
-
-    var didSetup = false
 
     func configureDataSourceDelegate() {
         self.mainView.collectionView.delegate = self
@@ -86,7 +84,7 @@ extension SummaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellID", for: indexPath) as! SummaryCollectionViewCell
-        
+
         return cell
     }
 }
@@ -119,11 +117,18 @@ extension SummaryViewController: UICollectionViewDelegate {
             product.image = nil
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let product = self.products[indexPath.item]
+        self.eventHandler?.requestSummaryDetail(with: product)
+    }
 }
 // MARK: - Collection view data source prefetching
 extension SummaryViewController: UICollectionViewDataSourcePrefetching {
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+
         for indexPath in indexPaths {
 
             let product = self.products[indexPath.item]
@@ -141,10 +146,13 @@ extension SummaryViewController: UICollectionViewDataSourcePrefetching {
             }
             
             product.task = self.downloader.download(url) { url in
+
                 product.task = nil
+
                 if let url = url, let data = try? Data(contentsOf: url) {
                     product.image = UIImage(data: data)
                     collectionView.reloadItems(at: [indexPath])
+
                 }
             }
         }

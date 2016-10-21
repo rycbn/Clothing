@@ -28,8 +28,8 @@ class SummaryCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func configure(for name: String, _ price: String, _ image: UIImage) {
-        self.imageView.image = image.decompressedImage
+    func configure(for name: String?, _ price: String?, _ image: UIImage?) {
+        self.imageView?.image = image?.decompressedImage
         self.productNameTextLabel?.text = name
         self.priceTextLabel?.text = price
     }

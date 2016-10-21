@@ -14,7 +14,6 @@ class SummaryPresenter {
     var summaryViewInterface: SummaryViewInterface?
     var summaryRouter: SummaryRouter?
 
-
     func updateSummaryViewInterface(with products: [SummaryProduct]) {
         self.summaryViewInterface?.showDisplay(with: products)
     }
@@ -31,6 +30,9 @@ extension SummaryPresenter: SummaryModuleInterface {
         self.summaryRouter?.showAlert()
     }
 
+    func requestSummaryDetail(with product: SummaryProduct) {
+        self.summaryRouter?.showSummaryDetailInterface(with: product)
+    }
 }
 
 // MARK: - SummaryInteractorOutput
