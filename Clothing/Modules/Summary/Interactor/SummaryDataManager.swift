@@ -42,6 +42,22 @@ class SummaryDataManager {
         }
         return products
     }
+
+    func productCountFromDataStore() -> Int {
+
+        guard let count = self.coreDataStore?.countProduct() else {
+            return 0
+        }
+        return count
+    }
+
+    func allProductFromDataStory() -> [Product] {
+
+        guard let products = self.coreDataStore?.allProducts() else {
+            return [Product]()
+        }
+        return products
+    }
 }
 
 

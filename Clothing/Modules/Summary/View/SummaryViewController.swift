@@ -120,8 +120,7 @@ extension SummaryViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let product = self.products[indexPath.item]
-        self.eventHandler?.requestSummaryDetail(with: product)
+        //let product = self.products[indexPath.item]
     }
 }
 // MARK: - Collection view data source prefetching

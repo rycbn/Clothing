@@ -61,6 +61,10 @@ extension CoreDataStore {
 
     }
 
+    func countProduct() -> Int {
+        let count = CoreDataOperator.objectCountForEntity(CoreDataStore.EntityName.product, context: self.privateContext)
+        return count
+    }
 }
 
 

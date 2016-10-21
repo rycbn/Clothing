@@ -14,7 +14,6 @@ class SummaryRouter {
     var summaryViewController: SummaryViewController?
     var summaryPresenter: SummaryPresenter?
     var rootRouter: RootRouter?
-    var summaryDetailRouter: SummaryDetailRouter?
 
     func presentSummaryInterface(from window: UIWindow) {
         let viewController = self.summaryViewControllerFromStoryboard()
@@ -37,10 +36,5 @@ class SummaryRouter {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertViewController.addAction(okAction)
         self.summaryViewController?.present(alertViewController, animated: true, completion: nil)
-    }
-
-    func showSummaryDetailInterface(with product: SummaryProduct) {
-        let navigationController = self.summaryViewController?.navigationController
-        self.summaryDetailRouter?.presentSummaryDetailInterface(from: navigationController, with: product)
     }
 }

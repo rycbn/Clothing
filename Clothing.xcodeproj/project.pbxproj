@@ -45,12 +45,6 @@
 		5E6B7BF71DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BF61DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift */; };
 		5E6B7BFB1DB9186E00B14365 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BF91DB9186E00B14365 /* Utility.swift */; };
 		5E6B7BFD1DB9188E00B14365 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BFC1DB9188E00B14365 /* UIImage.swift */; };
-		5E834C511DBA049D0071430E /* SummaryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C3F1DBA049D0071430E /* SummaryDetailInteractor.swift */; };
-		5E834C541DBA049D0071430E /* SummaryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C431DBA049D0071430E /* SummaryDetailPresenter.swift */; };
-		5E834C551DBA049D0071430E /* SummaryDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C451DBA049D0071430E /* SummaryDetailProtocol.swift */; };
-		5E834C561DBA049D0071430E /* SummaryDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C471DBA049D0071430E /* SummaryDetailRouter.swift */; };
-		5E834C5A1DBA049D0071430E /* SummaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C4D1DBA049D0071430E /* SummaryDetailView.swift */; };
-		5E834C5B1DBA049D0071430E /* SummaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E834C4E1DBA049D0071430E /* SummaryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,12 +113,6 @@
 		5E6B7BF61DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		5E6B7BF91DB9186E00B14365 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5E6B7BFC1DB9188E00B14365 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		5E834C3F1DBA049D0071430E /* SummaryDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailInteractor.swift; sourceTree = "<group>"; };
-		5E834C431DBA049D0071430E /* SummaryDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailPresenter.swift; sourceTree = "<group>"; };
-		5E834C451DBA049D0071430E /* SummaryDetailProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailProtocol.swift; sourceTree = "<group>"; };
-		5E834C471DBA049D0071430E /* SummaryDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailRouter.swift; sourceTree = "<group>"; };
-		5E834C4D1DBA049D0071430E /* SummaryDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailView.swift; sourceTree = "<group>"; };
-		5E834C4E1DBA049D0071430E /* SummaryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				5E0B5B691DB5D1CD00565BAC /* Summary */,
-				5E834C3B1DBA049D0071430E /* SummaryDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -447,59 +434,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		5E834C3B1DBA049D0071430E /* SummaryDetail */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C3C1DBA049D0071430E /* Interactor */,
-				5E834C421DBA049D0071430E /* Presenter */,
-				5E834C441DBA049D0071430E /* Protocol */,
-				5E834C461DBA049D0071430E /* Router */,
-				5E834C481DBA049D0071430E /* View */,
-			);
-			path = SummaryDetail;
-			sourceTree = "<group>";
-		};
-		5E834C3C1DBA049D0071430E /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C3F1DBA049D0071430E /* SummaryDetailInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		5E834C421DBA049D0071430E /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C431DBA049D0071430E /* SummaryDetailPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		5E834C441DBA049D0071430E /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C451DBA049D0071430E /* SummaryDetailProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		5E834C461DBA049D0071430E /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C471DBA049D0071430E /* SummaryDetailRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		5E834C481DBA049D0071430E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5E834C4D1DBA049D0071430E /* SummaryDetailView.swift */,
-				5E834C4E1DBA049D0071430E /* SummaryDetailViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -643,12 +577,10 @@
 				5E0B5B9C1DB606C800565BAC /* SummaryViewController.swift in Sources */,
 				5E0B5B941DB606C800565BAC /* SummaryInteractor.swift in Sources */,
 				5E0B5BA71DB609E000565BAC /* NetworkManager.swift in Sources */,
-				5E834C5B1DBA049D0071430E /* SummaryDetailViewController.swift in Sources */,
 				5E0B5B991DB606C800565BAC /* SummaryProtocol.swift in Sources */,
 				5E6B7BFB1DB9186E00B14365 /* Utility.swift in Sources */,
 				5E6B7BF51DB8ABF500B14365 /* SummaryCollectionViewLayout.swift in Sources */,
 				5E0B5BCD1DB6290E00565BAC /* Mapping.swift in Sources */,
-				5E834C541DBA049D0071430E /* SummaryDetailPresenter.swift in Sources */,
 				5E0B5B981DB606C800565BAC /* SummaryPresenter.swift in Sources */,
 				5E0B5BCF1DB6292400565BAC /* ProductParser.swift in Sources */,
 				5E6B7BF71DB8E51700B14365 /* SummaryCollectionViewLayoutAttributes.swift in Sources */,
@@ -658,18 +590,14 @@
 				5E0B5B9B1DB606C800565BAC /* SummaryView.swift in Sources */,
 				5E0B5B7D1DB5D1CD00565BAC /* main.m in Sources */,
 				5E0B5B931DB606C800565BAC /* SummaryDataManager.swift in Sources */,
-				5E834C511DBA049D0071430E /* SummaryDetailInteractor.swift in Sources */,
 				5E08FC141DB7644B004F7D8C /* SummaryCollectionViewCell.swift in Sources */,
 				5E6B7BFD1DB9188E00B14365 /* UIImage.swift in Sources */,
 				5E0B5BB01DB611EE00565BAC /* CoreDataStore.swift in Sources */,
-				5E834C5A1DBA049D0071430E /* SummaryDetailView.swift in Sources */,
 				5E0B5BC51DB61B9700565BAC /* Product.swift in Sources */,
 				5E0B5B771DB5D1CD00565BAC /* AppDelegate.m in Sources */,
 				5E0B5BA61DB609E000565BAC /* NetworkDownloader.swift in Sources */,
-				5E834C561DBA049D0071430E /* SummaryDetailRouter.swift in Sources */,
 				5E0B5BC31DB6190100565BAC /* CoreDataOperator.swift in Sources */,
 				5E0B5BC01DB6129500565BAC /* ManagedProduct.swift in Sources */,
-				5E834C551DBA049D0071430E /* SummaryDetailProtocol.swift in Sources */,
 				5E0B5B951DB606C800565BAC /* SummaryNetworkConvenience.swift in Sources */,
 				5E0B5B9A1DB606C800565BAC /* SummaryRouter.swift in Sources */,
 			);

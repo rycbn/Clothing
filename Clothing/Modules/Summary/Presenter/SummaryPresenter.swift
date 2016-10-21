@@ -29,10 +29,6 @@ extension SummaryPresenter: SummaryModuleInterface {
     func requestAlert() {
         self.summaryRouter?.showAlert()
     }
-
-    func requestSummaryDetail(with product: SummaryProduct) {
-        self.summaryRouter?.showSummaryDetailInterface(with: product)
-    }
 }
 
 // MARK: - SummaryInteractorOutput
@@ -49,5 +45,4 @@ extension SummaryPresenter: SummaryInteractorOutput {
         }
         self.updateSummaryViewInterface(with: products)
     }
-
 }

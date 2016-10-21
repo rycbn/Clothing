@@ -19,7 +19,6 @@ protocol SummaryInteractorOutput {
 protocol SummaryModuleInterface {
     func updateView()
     func requestAlert()
-    func requestSummaryDetail(with product: SummaryProduct)
 }
 
 protocol SummaryViewInterface {

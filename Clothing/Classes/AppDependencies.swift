@@ -22,7 +22,6 @@ class AppDependencies: NSObject {
     }
 
     func configureDependencies() {
-
         let networkManager = NetworkManager()
         let coreDataStore = CoreDataStore()
         let rootRouter = RootRouter()
@@ -41,10 +40,5 @@ class AppDependencies: NSObject {
         summaryInteractor.summaryInteractorOutput = summaryPresenter
         summaryDataManager.networkManager = networkManager
         summaryDataManager.coreDataStore = coreDataStore
-
-        // Summary Detail Module
-        let summaryDetailRouter = SummaryDetailRouter()
-
-        self.summaryRouter.summaryDetailRouter = summaryDetailRouter
     }
 }

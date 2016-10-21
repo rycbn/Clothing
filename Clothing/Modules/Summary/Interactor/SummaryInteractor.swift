@@ -34,18 +34,26 @@ class SummaryInteractor {
             sp.image = nil
             sp.task = nil
             return sp
-            //return SummaryProduct(id: product.id, name: product.name, favouriteSelected: product.favouriteSelected, currencyAmount: amount, imageURL: product.imageURL, image: nil, task: nil)
         }
         return upcomingItems
     }
-
 }
 // MARK:- SummaryInteractorInput
 extension SummaryInteractor: SummaryInteractorInput {
-    func findSummary() { 
-        self.summaryDataManager.loadSummary { [weak self] (products, error) in
-            let upcomingItems = self?.upcomingItems(from: products)
-            self?.summaryInteractorOutput?.foundSummary(upcomingItems, error)
+    func findSummary() {
+
+        let productCount = self.summaryDataManager.productCountFromDataStore()
+
+        if productCount == 0 {
+            self.summaryDataManager.loadSummary { [weak self] (products, error) in
+                let upcomingItems = self?.upcomingItems(from: products)
+                self?.summaryInteractorOutput?.foundSummary(upcomingItems, error)
+            }
+        } else {
+            let products = self.summaryDataManager.allProductFromDataStory()
+            let upcommingItems = self.upcomingItems(from: products)
+            self.summaryInteractorOutput?.foundSummary(upcommingItems, nil)
         }
+
     }
 }
