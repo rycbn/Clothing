@@ -65,6 +65,7 @@ class SummaryCollectionViewLayout: UICollectionViewLayout {
 
                 let attributes = SummaryCollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.imageHeight = imageHeight
+                attributes.textHeight = 70.0
                 attributes.frame = insetFrame
                 cache.append(attributes)
 

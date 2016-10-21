@@ -15,19 +15,19 @@
 //
 
 import UIKit
+typealias NetworkDownloaderCompletion = (URL?) -> ()
 
-let isMain = false // try false to move delegate methods onto a background thread
+let isMain = false
 
 class NetworkDownloader: NSObject {
-
-    typealias NetworkDownloaderCompletion = (URL?) -> ()
 
     let config: URLSessionConfiguration
     let queue = OperationQueue()
 
     lazy var session: URLSession = {
         let q = (isMain ? .main: self.queue)
-        return URLSession(configuration: self.config, delegate: NetworkDownloader.NetworkDownloaderDelegate(), delegateQueue: q)
+        let session = URLSession(configuration: self.config, delegate: NetworkDownloader.NetworkDownloaderDelegate(), delegateQueue: q)
+        return session
     }()
 
     init(configuration config: URLSessionConfiguration) {

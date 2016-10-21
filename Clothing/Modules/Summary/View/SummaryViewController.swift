@@ -117,11 +117,6 @@ extension SummaryViewController: UICollectionViewDelegate {
             product.image = nil
         }
     }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        //let product = self.products[indexPath.item]
-    }
 }
 // MARK: - Collection view data source prefetching
 extension SummaryViewController: UICollectionViewDataSourcePrefetching {
@@ -151,7 +146,6 @@ extension SummaryViewController: UICollectionViewDataSourcePrefetching {
                 if let url = url, let data = try? Data(contentsOf: url) {
                     product.image = UIImage(data: data)
                     collectionView.reloadItems(at: [indexPath])
-
                 }
             }
         }
@@ -173,8 +167,8 @@ extension SummaryViewController: CollectionViewCellLayoutDelegate {
 
         let annotationPadding: CGFloat = 4.0
         let annotationHeaderHeight: CGFloat = 17.0
-        let productNameHeight: CGFloat = 55.0
-        let height =  annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
+        let productNameHeight: CGFloat = 70.0
+        let height = annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
         
         return height
     }
