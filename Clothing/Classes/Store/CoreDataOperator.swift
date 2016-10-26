@@ -21,10 +21,10 @@ class CoreDataOperator {
         }
     }
 
-    class func objectForEntity(_ entityName: String, context: NSManagedObjectContext, filter: NSPredicate?, soft:[NSSortDescriptor]?) -> [AnyObject]? {
+    class func objectForEntity(_ entityName: String, context: NSManagedObjectContext, filter: NSPredicate?, sort:[NSSortDescriptor]?) -> [AnyObject]? {
         let request = CoreDataOperator.fetchRequest(entityName)
         request.predicate = filter
-        request.sortDescriptors = soft
+        request.sortDescriptors = sort
         do {
             return try context.fetch(request)
         } catch {

@@ -6,14 +6,6 @@
 //  Copyright © 2016 rycbn. All rights reserved.
 //
 
-//
-//  NetworkDownloader.swift
-//  Clothing
-//
-//  Created by Roger Yong on 17/10/2016.
-//  Copyright © 2016 rycbn. All rights reserved.
-//
-
 import UIKit
 typealias NetworkDownloaderCompletion = (URL?) -> ()
 

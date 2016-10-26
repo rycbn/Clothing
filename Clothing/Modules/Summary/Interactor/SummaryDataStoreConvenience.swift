@@ -47,7 +47,7 @@ extension CoreDataStore {
 
         let nameSort = NSSortDescriptor(key: JSONResponseKeys.name, ascending: true)
         let sort = [nameSort]
-        let managedProduct = CoreDataOperator.objectForEntity(CoreDataStore.EntityName.product, context: self.privateContext, filter: nil, soft: sort) as! [ManagedProduct]
+        let managedProduct = CoreDataOperator.objectForEntity(CoreDataStore.EntityName.product, context: self.privateContext, filter: nil, sort: sort) as! [ManagedProduct]
 
         return managedProduct.map { dictionary in
             return ProductParser.mapElement(dictionary)
