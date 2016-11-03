@@ -11,6 +11,7 @@ import Foundation
 struct APIKeys {
     static let baseURL = "https://api.net-a-porter.com/"
     static let imageURL = "https://cache.net-a-porter.com/images/products/{pid}/{pid}_fr_sl.jpg"
+    static let detailImageURL = "https://cache.net-a-porter.com/images/products/{pid}/{pid}_ou_pp.jpg"
 }
 
 struct Methods {

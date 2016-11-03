@@ -10,7 +10,7 @@ import UIKit
 
 class AppDependencies: NSObject {
 
-    let summaryRouter = SummaryRouter()
+    let summaryListRouter = SummaryListRouter()
 
     override init() {
         super.init()
@@ -18,7 +18,7 @@ class AppDependencies: NSObject {
     }
 
     func installRootViewController(into window: UIWindow) {
-        self.summaryRouter.presentSummaryInterface(from: window)
+        self.summaryListRouter.presentSummaryListInterface(from: window)
     }
 
     func configureDependencies() {
@@ -27,18 +27,22 @@ class AppDependencies: NSObject {
         let rootRouter = RootRouter()
 
 
-        // Summary Module
-        let summaryPresenter = SummaryPresenter()
-        let summaryDataManager = SummaryDataManager()
-        let summaryInteractor = SummaryInteractor(summaryDataManager)
+        // Summary List Module
+        let summaryListPresenter = SummaryListPresenter()
+        let summaryListDataManager = SummaryListDataManager()
+        let summaryListInteractor = SummaryListInteractor(summaryListDataManager)
 
-        self.summaryRouter.rootRouter = rootRouter
-        self.summaryRouter.summaryPresenter = summaryPresenter
+        self.summaryListRouter.rootRouter = rootRouter
+        self.summaryListRouter.summaryListPresenter = summaryListPresenter
 
-        summaryPresenter.summaryRouter = self.summaryRouter
-        summaryPresenter.summaryInteractorInput = summaryInteractor
-        summaryInteractor.summaryInteractorOutput = summaryPresenter
-        summaryDataManager.networkManager = networkManager
-        summaryDataManager.coreDataStore = coreDataStore
+        summaryListPresenter.summaryListRouter = self.summaryListRouter
+        summaryListPresenter.summaryListInteractorInput = summaryListInteractor
+        summaryListInteractor.summaryListInteractorOutput = summaryListPresenter
+        summaryListDataManager.networkManager = networkManager
+        summaryListDataManager.coreDataStore = coreDataStore
+        
+        // Summary Detail Module
+        let summaryDetailRouter = SummaryDetailRouter()
+        self.summaryListRouter.summaryDetailRouter = summaryDetailRouter
     }
 }

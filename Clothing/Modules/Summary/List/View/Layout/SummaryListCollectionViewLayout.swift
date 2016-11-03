@@ -1,5 +1,5 @@
 //
-//  SummaryCollectionViewLayout.swift
+//  SummaryListCollectionViewLayout.swift
 //  Clothing
 //
 //  Created by Roger Yong on 19/10/2016.
@@ -15,13 +15,13 @@ protocol CollectionViewCellLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
 }
 
-class SummaryCollectionViewLayout: UICollectionViewLayout {
+class SummaryListCollectionViewLayout: UICollectionViewLayout {
 
     var delegate: CollectionViewCellLayoutDelegate!
     var numberOfColumns = 2
     var cellPadding: CGFloat = 6
 
-    private var cache = [SummaryCollectionViewLayoutAttributes]()
+    private var cache = [SummaryListCollectionViewLayoutAttributes]()
     private var contentHeight: CGFloat = 0.0
     private var contentWidth: CGFloat {
         guard let insets = self.collectionView?.contentInset else {
@@ -34,7 +34,7 @@ class SummaryCollectionViewLayout: UICollectionViewLayout {
     }
 
     override class var layoutAttributesClass: AnyClass {
-        return SummaryCollectionViewLayoutAttributes.self
+        return SummaryListCollectionViewLayoutAttributes.self
     }
 
     override func prepare() {
@@ -63,7 +63,7 @@ class SummaryCollectionViewLayout: UICollectionViewLayout {
                 let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
                 let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
 
-                let attributes = SummaryCollectionViewLayoutAttributes(forCellWith: indexPath)
+                let attributes = SummaryListCollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.imageHeight = imageHeight
                 attributes.textHeight = 70.0
                 attributes.frame = insetFrame

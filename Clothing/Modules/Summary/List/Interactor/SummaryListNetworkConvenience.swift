@@ -10,7 +10,7 @@ import Foundation
 
 extension NetworkManager {
 
-    func loadingSummaryFromAPI(_ completionHandler: @escaping CompletionHandler) {
+    func loadingSummaryListFromAPI(_ completionHandler: @escaping CompletionHandler) {
         let parameters = [String: String]()
         let method = Methods.summary
         _ = self.taskForGET(with: method, parameters: parameters, completionHandler: { (resutls, error) in

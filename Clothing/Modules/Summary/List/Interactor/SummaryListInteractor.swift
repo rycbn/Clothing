@@ -1,5 +1,5 @@
 //
-//  SummaryInteractor.swift
+//  SummaryListInteractor.swift
 //  Clothing
 //
 //  Created by Roger Yong on 18/10/2016.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SummaryInteractor {
+class SummaryListInteractor {
 
-    var summaryInteractorOutput: SummaryInteractorOutput?
+    var summaryListInteractorOutput: SummaryListInteractorOutput?
 
-    let summaryDataManager: SummaryDataManager
+    let summaryListDataManager: SummaryListDataManager
 
-    init(_ summaryDataManager: SummaryDataManager) {
-        self.summaryDataManager = summaryDataManager
+    init(_ summaryListDataManager: SummaryListDataManager) {
+        self.summaryListDataManager = summaryListDataManager
     }
 
     func upcomingItems(from products: [Product]?) -> [SummaryProduct] {
@@ -38,21 +38,21 @@ class SummaryInteractor {
         return upcomingItems
     }
 }
-// MARK:- SummaryInteractorInput
-extension SummaryInteractor: SummaryInteractorInput {
-    func findSummary() {
+// MARK:- SummaryListInteractorInput
+extension SummaryListInteractor: SummaryListInteractorInput {
+    func findSummaryList() {
 
-        let productCount = self.summaryDataManager.productCountFromDataStore()
+        let productCount = self.summaryListDataManager.productCountFromDataStore()
 
         if productCount == 0 {
-            self.summaryDataManager.loadSummary { [weak self] (products, error) in
+            self.summaryListDataManager.loadSummaryList { [weak self] (products, error) in
                 let upcomingItems = self?.upcomingItems(from: products)
-                self?.summaryInteractorOutput?.foundSummary(upcomingItems, error)
+                self?.summaryListInteractorOutput?.foundSummaryList(upcomingItems, error)
             }
         } else {
-            let products = self.summaryDataManager.allProductFromDataStory()
+            let products = self.summaryListDataManager.allProductFromDataStory()
             let upcommingItems = self.upcomingItems(from: products)
-            self.summaryInteractorOutput?.foundSummary(upcommingItems, nil)
+            self.summaryListInteractorOutput?.foundSummaryList(upcommingItems, nil)
         }
 
     }

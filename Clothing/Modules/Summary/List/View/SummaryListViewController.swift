@@ -1,5 +1,5 @@
 //
-//  SummaryViewController.swift
+//  SummaryListViewController.swift
 //  Clothing
 //
 //  Created by Roger Yong on 18/10/2016.
@@ -9,13 +9,13 @@
 import UIKit
 import AVFoundation
 
-class SummaryViewController: UIViewController {
+class SummaryListViewController: UIViewController {
 
-    var mainView: SummaryView {
-        return view as! SummaryView
+    var mainView: SummaryListView {
+        return view as! SummaryListView
     }
 
-    var eventHandler: SummaryModuleInterface?
+    var eventHandler: SummaryListModuleInterface?
     var products: [SummaryProduct] = []
 
     lazy var configuration : URLSessionConfiguration = {
@@ -44,13 +44,13 @@ class SummaryViewController: UIViewController {
         self.mainView.collectionView.delegate = self
         self.mainView.collectionView.dataSource = self
         self.mainView.collectionView.prefetchDataSource = self
-        if let layout = self.mainView.collectionView.collectionViewLayout as? SummaryCollectionViewLayout {
+        if let layout = self.mainView.collectionView.collectionViewLayout as? SummaryListCollectionViewLayout {
             layout.delegate = self
         }
     }
 }
-// MARK: - SummaryViewInterface
-extension SummaryViewController: SummaryViewInterface {
+// MARK: - SummaryListViewInterface
+extension SummaryListViewController: SummaryListViewInterface {
 
     func showError() {
         self.eventHandler?.requestAlert()
@@ -66,7 +66,7 @@ extension SummaryViewController: SummaryViewInterface {
     }
 }
 // MARK: - Collection view data source
-extension SummaryViewController: UICollectionViewDataSource {
+extension SummaryListViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -83,17 +83,17 @@ extension SummaryViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellID", for: indexPath) as! SummaryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellID", for: indexPath) as! SummaryListCollectionViewCell
 
         return cell
     }
 }
 // MARK: - Collection view delegate 
-extension SummaryViewController: UICollectionViewDelegate {
+extension SummaryListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
-        guard let cell = cell as? SummaryCollectionViewCell else {
+        guard let cell = cell as? SummaryListCollectionViewCell else {
             fatalError("Error with register cell")
         }
 
@@ -106,9 +106,16 @@ extension SummaryViewController: UICollectionViewDelegate {
             self.collectionView(collectionView, prefetchItemsAt: [indexPath])
         } else {
             cell.indicator?.stopAnimating()
+            cell.indicator?.hidesWhenStopped = true
         }
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = self.products[indexPath.item]
+        self.eventHandler?.nextView(with: product)
+    }
+    
+    /*
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
         let product = self.products[indexPath.item]
@@ -117,9 +124,10 @@ extension SummaryViewController: UICollectionViewDelegate {
             product.image = nil
         }
     }
+    */
 }
 // MARK: - Collection view data source prefetching
-extension SummaryViewController: UICollectionViewDataSourcePrefetching {
+extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
 
@@ -152,7 +160,7 @@ extension SummaryViewController: UICollectionViewDataSourcePrefetching {
     }
 }
 // MARK: - Collection view custom layout delegate 
-extension SummaryViewController: CollectionViewCellLayoutDelegate {
+extension SummaryListViewController: CollectionViewCellLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
 

@@ -1,5 +1,5 @@
 //
-//  SummaryDataStoreConvenience.swift
+//  ListDataStoreConvenience.swift
 //  Clothing
 //
 //  Created by Roger Yong on 18/10/2016.

@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDk-Wn-Njt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDk-Wn-Njt">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Summary View Controller-->
+        <!--Summary List View Controller-->
         <scene sceneID="kGr-oY-GeW">
             <objects>
-                <viewController storyboardIdentifier="SummaryStoryboardID" id="eDk-Wn-Njt" customClass="SummaryViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SummaryListStoryboardID" id="eDk-Wn-Njt" customClass="SummaryListViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VVM-PC-WEG"/>
                         <viewControllerLayoutGuide type="bottom" id="S7o-g0-gVB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7df-u5-XdC" customClass="SummaryView" customModule="Clothing" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="7df-u5-XdC" customClass="SummaryListView" customModule="Clothing" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TR3-AZ-Pfj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="OBb-8c-hxm" customClass="SummaryCollectionViewLayout" customModule="Clothing" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="OBb-8c-hxm" customClass="SummaryListCollectionViewLayout" customModule="Clothing" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCellID" id="KJq-dW-pd9" customClass="SummaryCollectionViewCell" customModule="Clothing" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCellID" id="KJq-dW-pd9" customClass="SummaryListCollectionViewCell" customModule="Clothing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -30,14 +34,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2R-q1-BaO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whitecolor" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-K0-5E7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="120"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="120" id="cJs-iU-xZO"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mjL-55-bIT"/>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mjL-55-bIT">
+                                                            <rect key="frame" x="80" y="50" width="20" height="20"/>
+                                                        </activityIndicatorView>
                                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaz-dd-bfW">
+                                                            <rect key="frame" x="0.0" y="120" width="180" height="42"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="42" id="C7h-wN-qhs"/>
@@ -47,6 +56,7 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-FR-w4v">
+                                                            <rect key="frame" x="0.0" y="161" width="180" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="m8a-Ws-fdU"/>
                                                             </constraints>
@@ -107,6 +117,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsc-0K-1q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="224.80000000000001" y="-622.03898050974522"/>
+        </scene>
+        <!--Summary Detail View Controller-->
+        <scene sceneID="KXS-5e-XXy">
+            <objects>
+                <viewController storyboardIdentifier="SummaryDetailStoryboardID" id="Guv-j5-t4l" customClass="SummaryDetailViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z0K-PS-R2d"/>
+                        <viewControllerLayoutGuide type="bottom" id="pT8-gJ-w36"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R9v-zQ-59h" customClass="SummaryDetailView" customModule="Clothing" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uco-dr-mgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="895" y="-622"/>
         </scene>
     </scenes>
     <resources>

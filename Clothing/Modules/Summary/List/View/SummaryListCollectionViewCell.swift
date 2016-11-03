@@ -1,5 +1,5 @@
 //
-//  SummaryCollectionViewCell.swift
+//  SummaryListCollectionViewCell.swift
 //  Clothing
 //
 //  Created by Roger Yong on 19/10/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SummaryCollectionViewCell: UICollectionViewCell {
+class SummaryListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -29,7 +29,7 @@ class SummaryCollectionViewCell: UICollectionViewCell {
 
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-        if let attributes = layoutAttributes as? SummaryCollectionViewLayoutAttributes {
+        if let attributes = layoutAttributes as? SummaryListCollectionViewLayoutAttributes {
             imageViewHeightLayoutConstraint.constant = attributes.imageHeight
             textViewHeightLayoutConstraints.constant = attributes.textHeight
         }

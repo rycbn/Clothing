@@ -1,5 +1,5 @@
 //
-//  SummaryDataManager.swift
+//  SummaryListDataManager.swift
 //  Clothing
 //
 //  Created by Roger Yong on 18/10/2016.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-class SummaryDataManager {
+class SummaryListDataManager {
 
     var networkManager: NetworkManager?
     var coreDataStore: CoreDataStore?
 
-    func loadSummary(onComplete: @escaping ([Product]?, Error?) -> Void) {
-        self.networkManager?.loadingSummaryFromAPI { [weak self] (results, error) in
+    func loadSummaryList(onComplete: @escaping ([Product]?, Error?) -> Void) {
+        self.networkManager?.loadingSummaryListFromAPI { [weak self] (results, error) in
 
             guard error == nil else {
                 onComplete(nil, error)
