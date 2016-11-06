@@ -19,7 +19,7 @@ class SummaryListPresenter {
     }
     
     func updateLatestSummaryListViewInterface(with products: [SummaryProduct]) {
-        self.summaryListViewInterface?.reloadCellAtItemRow(with: products)
+        self.summaryListViewInterface?.reloadCellAtItem(with: products)
     }
 }
 

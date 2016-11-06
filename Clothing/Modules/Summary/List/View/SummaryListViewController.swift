@@ -66,12 +66,11 @@ extension SummaryListViewController: SummaryListViewInterface {
         self.mainView.collectionView.reloadData()
     }
     
-    func reloadCellAtItemRow(with data: [SummaryProduct]) {
+    func reloadCellAtItem(with data: [SummaryProduct]) {
         self.products = data
         let indexPath = IndexPath(item: self.indexRow, section: 0)
         self.mainView.collectionView.reloadItems(at: [indexPath])
     }
-    
 }
 // MARK: - Collection view cell delegate
 extension SummaryListViewController: SummaryListCollectionViewCellDelegate {

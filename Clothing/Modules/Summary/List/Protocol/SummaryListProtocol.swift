@@ -29,5 +29,5 @@ protocol SummaryListViewInterface {
     func showError()
     func showDisplay(with data: [SummaryProduct])
     func reloadEntries()
-    func reloadCellAtItemRow(with data: [SummaryProduct])
+    func reloadCellAtItem(with data: [SummaryProduct])
 }
