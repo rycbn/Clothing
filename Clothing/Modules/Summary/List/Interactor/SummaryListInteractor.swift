@@ -50,10 +50,15 @@ extension SummaryListInteractor: SummaryListInteractorInput {
                 self?.summaryListInteractorOutput?.foundSummaryList(upcomingItems, error)
             }
         } else {
-            let products = self.summaryListDataManager.allProductFromDataStory()
+            let products = self.summaryListDataManager.allProductFromDataStore()
             let upcommingItems = self.upcomingItems(from: products)
             self.summaryListInteractorOutput?.foundSummaryList(upcommingItems, nil)
         }
-
+    }
+    
+    func findLatestSummaryList(with productID: NSNumber, _ favouriteSelected: Bool) {
+        let products = self.summaryListDataManager.allLatestProductFromDataStore(productID, favouriteSelected)
+        let upcommingItems = self.upcomingItems(from: products)
+        self.summaryListInteractorOutput?.foundLatestSummaryList(upcommingItems)
     }
 }

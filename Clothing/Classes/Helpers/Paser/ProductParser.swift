@@ -21,6 +21,6 @@ struct ProductParser: Mapping {
         else {
             fatalError("Error when parsing elements")
         }
-        return Product(id: id, name: name, currency: currency, divisor: divisor, amount: amount, imageURL: imageURL)
+        return Product(id: id, name: name, favouriteSelected: element.favouriteSelected, currency: currency, divisor: divisor, amount: amount, imageURL: imageURL)
     }
 }

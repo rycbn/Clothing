@@ -12,7 +12,7 @@ extension CoreDataStore {
 
     func insertProduct(from entries: [AnyObject]) -> [Product] {
 
-        self.deleteProducts()
+        self.deleteProduct()
 
         guard
             let entityProduct = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.product, in: self.privateContext),
@@ -38,12 +38,12 @@ extension CoreDataStore {
             self.saveContext()
         }
 
-        let allProducts = self.allProducts()
+        let allProduct = self.allProduct()
 
-        return allProducts
+        return allProduct
     }
 
-    func allProducts() -> [Product] {
+    func allProduct() -> [Product] {
 
         let nameSort = NSSortDescriptor(key: JSONResponseKeys.name, ascending: true)
         let sort = [nameSort]
@@ -54,7 +54,7 @@ extension CoreDataStore {
         }
     }
 
-    func deleteProducts() {
+    func deleteProduct() {
 
         _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.product, context: self.privateContext)
         _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.price, context: self.privateContext)
@@ -64,6 +64,25 @@ extension CoreDataStore {
     func countProduct() -> Int {
         let count = CoreDataOperator.objectCountForEntity(CoreDataStore.EntityName.product, context: self.privateContext)
         return count
+    }
+    
+    func allLatestProduct(_ productID: NSNumber, _ favouriteSelected: Bool) -> [Product]? {
+        let request = CoreDataOperator.fetchRequest(CoreDataStore.EntityName.product)
+        request.predicate = NSPredicate(format: "%K = %@", JSONResponseKeys.id, productID)
+        do {
+            let results = try self.privateContext.fetch(request) as! [ManagedProduct]
+            let item = results[0]
+            item.favouriteSelected = favouriteSelected
+            self.saveContext()
+            
+            let products = self.allProduct()
+            
+            return products
+        }
+        catch let error as NSError {
+            print("Error: \(error)" + "description: \(error.localizedDescription)")
+            return nil
+        }
     }
 }
 

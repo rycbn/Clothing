@@ -17,6 +17,7 @@ class SummaryListViewController: UIViewController {
 
     var eventHandler: SummaryListModuleInterface?
     var products: [SummaryProduct] = []
+    var indexRow: Int!
 
     lazy var configuration : URLSessionConfiguration = {
         let config = URLSessionConfiguration.ephemeral
@@ -64,6 +65,20 @@ extension SummaryListViewController: SummaryListViewInterface {
     func reloadEntries() {
         self.mainView.collectionView.reloadData()
     }
+    
+    func reloadCellAtItemRow(with data: [SummaryProduct]) {
+        self.products = data
+        let indexPath = IndexPath(item: self.indexRow, section: 0)
+        self.mainView.collectionView.reloadItems(at: [indexPath])
+    }
+    
+}
+// MARK: - Collection view cell delegate
+extension SummaryListViewController: SummaryListCollectionViewCellDelegate {
+    func updateFavourite(_ indexRow: Int, _ productID: NSNumber, _ favouriteSelected: Bool) {
+        self.indexRow = indexRow
+        self.eventHandler?.updateView(with: productID, favouriteSelected)
+    }
 }
 // MARK: - Collection view data source
 extension SummaryListViewController: UICollectionViewDataSource {
@@ -99,14 +114,18 @@ extension SummaryListViewController: UICollectionViewDelegate {
 
         let product = self.products[indexPath.item]
 
-        cell.configure(for: product.name, product.currencyAmount, product.image)
-
+        cell.configure(for: indexPath.item, product.id, product.name, product.currencyAmount, product.image, product.favouriteSelected)
+        cell.delegate = self
+        cell.isExclusiveTouch = true
+        
         if product.task == nil && product.image == nil {
             cell.indicator?.startAnimating()
             self.collectionView(collectionView, prefetchItemsAt: [indexPath])
         } else {
-            cell.indicator?.stopAnimating()
-            cell.indicator?.hidesWhenStopped = true
+            if product.image != nil {
+                cell.indicator?.stopAnimating()
+                cell.indicator?.hidesWhenStopped = true
+            }
         }
     }
     

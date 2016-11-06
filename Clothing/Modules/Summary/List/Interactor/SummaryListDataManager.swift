@@ -51,13 +51,22 @@ class SummaryListDataManager {
         return count
     }
 
-    func allProductFromDataStory() -> [Product] {
+    func allProductFromDataStore() -> [Product] {
 
-        guard let products = self.coreDataStore?.allProducts() else {
+        guard let products = self.coreDataStore?.allProduct() else {
             return [Product]()
         }
         return products
     }
+    
+    func allLatestProductFromDataStore(_ productID: NSNumber, _ favouriteSelected: Bool) -> [Product] {        
+        
+        guard let products = self.coreDataStore?.allLatestProduct(productID, favouriteSelected) else {
+            return [Product]()
+        }
+        return products
+    }
+
 }
 
 

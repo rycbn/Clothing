@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +57,7 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-FR-w4v">
-                                                            <rect key="frame" x="0.0" y="161" width="180" height="16"/>
+                                                            <rect key="frame" x="0.0" y="161" width="90" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="m8a-Ws-fdU"/>
                                                             </constraints>
@@ -64,15 +65,25 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdK-bO-9vu">
+                                                            <rect key="frame" x="158" y="158" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="HsO-1U-b9z"/>
+                                                                <constraint firstAttribute="height" constant="22" id="UOl-qe-Xsq"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="heart_empty"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="LuW-K0-5E7" firstAttribute="leading" secondItem="B2R-q1-BaO" secondAttribute="leading" id="71O-ag-cMi"/>
                                                         <constraint firstItem="eaz-dd-bfW" firstAttribute="leading" secondItem="B2R-q1-BaO" secondAttribute="leading" id="95Y-Wb-gdO"/>
                                                         <constraint firstAttribute="trailing" secondItem="LuW-K0-5E7" secondAttribute="trailing" id="AVy-9A-8Zp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JdK-bO-9vu" secondAttribute="bottom" id="EHR-FS-BbL"/>
                                                         <constraint firstItem="LuW-K0-5E7" firstAttribute="top" secondItem="B2R-q1-BaO" secondAttribute="top" id="N8y-je-rg0"/>
                                                         <constraint firstItem="Gkb-FR-w4v" firstAttribute="leading" secondItem="B2R-q1-BaO" secondAttribute="leading" id="RNL-Z5-KbC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Gkb-FR-w4v" secondAttribute="trailing" id="TcX-sq-VnY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JdK-bO-9vu" secondAttribute="trailing" id="RXm-Wa-GJ4"/>
+                                                        <constraint firstAttribute="centerX" secondItem="Gkb-FR-w4v" secondAttribute="trailing" id="TcX-sq-VnY"/>
                                                         <constraint firstItem="mjL-55-bIT" firstAttribute="centerX" secondItem="LuW-K0-5E7" secondAttribute="centerX" id="WVn-jY-d9D"/>
                                                         <constraint firstAttribute="bottom" secondItem="Gkb-FR-w4v" secondAttribute="bottom" constant="3" id="Ye0-UM-0FB"/>
                                                         <constraint firstItem="mjL-55-bIT" firstAttribute="centerY" secondItem="LuW-K0-5E7" secondAttribute="centerY" id="iYs-Eb-D4O"/>
@@ -91,6 +102,7 @@
                                         <size key="customSize" width="180" height="180"/>
                                         <connections>
                                             <outlet property="containerView" destination="B2R-q1-BaO" id="i8X-tx-Fla"/>
+                                            <outlet property="heartButton" destination="JdK-bO-9vu" id="mvp-TW-7Jw"/>
                                             <outlet property="imageView" destination="LuW-K0-5E7" id="pHD-Qs-7b1"/>
                                             <outlet property="imageViewHeightLayoutConstraint" destination="cJs-iU-xZO" id="kqh-t4-hOn"/>
                                             <outlet property="indicator" destination="mjL-55-bIT" id="ymE-S8-g6h"/>
@@ -138,6 +150,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart_empty" width="42" height="42"/>
         <image name="whitecolor" width="240" height="240"/>
     </resources>
 </document>

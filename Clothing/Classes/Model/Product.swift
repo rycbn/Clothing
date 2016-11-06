@@ -17,7 +17,7 @@ struct Product {
     let amount: NSNumber
     let imageURL: String
 
-    init(id: NSNumber, name: String, favouriteSelected: Bool = false, currency: String, divisor: NSNumber, amount: NSNumber, imageURL: String) {
+    init(id: NSNumber, name: String, favouriteSelected: Bool, currency: String, divisor: NSNumber, amount: NSNumber, imageURL: String) {
         self.id = id
         self.name = name
         self.favouriteSelected = favouriteSelected
