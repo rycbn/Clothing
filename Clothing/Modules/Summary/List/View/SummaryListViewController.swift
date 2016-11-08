@@ -32,7 +32,7 @@ class SummaryListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Clothing"
+        self.title = Translation.clothing
         self.configureDataSourceDelegate()
     }
 
@@ -97,7 +97,7 @@ extension SummaryListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCellID", for: indexPath) as! SummaryListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.collectionViewCellID, for: indexPath) as! SummaryListCollectionViewCell
 
         return cell
     }

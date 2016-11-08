@@ -12,4 +12,6 @@ struct Translation {
     static let sorry = "Sorry"
     static let somethingWrong = "Something wrong, please try again!"
     static let ok = "OK"
+    static let clothing = "Clothing"
+    static let detail = "Detail"
 }

@@ -12,4 +12,5 @@ struct Identifier {
     static let main = "Main"
     static let summaryList = "SummaryListStoryboardID"
     static let summaryDetail = "SummaryDetailStoryboardID"
+    static let collectionViewCellID = "CollectionViewCellID"
 }

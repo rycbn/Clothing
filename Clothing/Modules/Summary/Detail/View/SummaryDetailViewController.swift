@@ -29,7 +29,7 @@ class SummaryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Detail"
+        self.title = Translation.detail
         self.configureView()
     }
     
@@ -47,9 +47,9 @@ class SummaryDetailViewController: UIViewController {
         self.downloader.download(url) { url in
             if let url = url, let data = try? Data(contentsOf: url) {
                 let image = UIImage(data: data)
-                self.detailView.imageView.image = image
-                self.detailView.indicator.stopAnimating()
-                self.detailView.indicator.hidesWhenStopped = true
+                self.detailView.imageView?.image = image
+                self.detailView.indicator?.stopAnimating()
+                self.detailView.indicator?.hidesWhenStopped = true
             }
         }
     }
