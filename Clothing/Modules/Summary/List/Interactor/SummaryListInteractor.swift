@@ -56,7 +56,7 @@ extension SummaryListInteractor: SummaryListInteractorInput {
         }
     }
     
-    func findLatestSummaryList(with productID: NSNumber, _ favouriteSelected: Bool) {
+    func findLatestSummaryList(_ productID: NSNumber, _ favouriteSelected: Bool) {
         let products = self.summaryListDataManager.allLatestProductFromDataStore(productID, favouriteSelected)
         let upcommingItems = self.upcomingItems(from: products)
         self.summaryListInteractorOutput?.foundLatestSummaryList(upcommingItems)

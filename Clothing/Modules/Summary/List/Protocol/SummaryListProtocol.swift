@@ -10,7 +10,7 @@ import Foundation
 
 protocol SummaryListInteractorInput {
     func findSummaryList()
-    func findLatestSummaryList(with productID: NSNumber, _ favouriteSelected: Bool)
+    func findLatestSummaryList(_ productID: NSNumber, _ favouriteSelected: Bool)
 }
 
 protocol SummaryListInteractorOutput {
@@ -22,12 +22,12 @@ protocol SummaryListModuleInterface {
     func updateView()
     func requestAlert()
     func nextView(with product: SummaryProduct)
-    func updateView(with productID: NSNumber, _ favouriteSelected: Bool)
+    func updateLatestView(_ productID: NSNumber, _ favouriteSelected: Bool)
 }
 
 protocol SummaryListViewInterface {
     func showError()
-    func showDisplay(with data: [SummaryProduct])
+    func showDisplay(_ data: [SummaryProduct])
     func reloadEntries()
-    func reloadCellAtItem(with data: [SummaryProduct])
+    func reloadCellAtItem(_ data: [SummaryProduct])
 }

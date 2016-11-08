@@ -57,7 +57,7 @@ extension SummaryListViewController: SummaryListViewInterface {
         self.eventHandler?.requestAlert()
     }
 
-    func showDisplay(with data: [SummaryProduct]) {
+    func showDisplay(_ data: [SummaryProduct]) {
         self.products = data
         self.reloadEntries()
     }
@@ -66,7 +66,7 @@ extension SummaryListViewController: SummaryListViewInterface {
         self.mainView.collectionView.reloadData()
     }
     
-    func reloadCellAtItem(with data: [SummaryProduct]) {
+    func reloadCellAtItem(_ data: [SummaryProduct]) {
         self.products = data
         let indexPath = IndexPath(item: self.indexRow, section: 0)
         self.mainView.collectionView.reloadItems(at: [indexPath])
@@ -76,7 +76,7 @@ extension SummaryListViewController: SummaryListViewInterface {
 extension SummaryListViewController: SummaryListCollectionViewCellDelegate {
     func updateFavourite(_ indexRow: Int, _ productID: NSNumber, _ favouriteSelected: Bool) {
         self.indexRow = indexRow
-        self.eventHandler?.updateView(with: productID, favouriteSelected)
+        self.eventHandler?.updateLatestView(productID, favouriteSelected)
     }
 }
 // MARK: - Collection view data source

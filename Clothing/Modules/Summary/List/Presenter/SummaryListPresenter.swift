@@ -15,11 +15,11 @@ class SummaryListPresenter {
     var summaryListRouter: SummaryListRouter?
 
     func updateSummaryListViewInterface(with products: [SummaryProduct]) {
-        self.summaryListViewInterface?.showDisplay(with: products)
+        self.summaryListViewInterface?.showDisplay(products)
     }
     
     func updateLatestSummaryListViewInterface(with products: [SummaryProduct]) {
-        self.summaryListViewInterface?.reloadCellAtItem(with: products)
+        self.summaryListViewInterface?.reloadCellAtItem(products)
     }
 }
 
@@ -38,8 +38,8 @@ extension SummaryListPresenter: SummaryListModuleInterface {
         self.summaryListRouter?.showSummaryDetailInterface(with: product)
     }
     
-    func updateView(with productID: NSNumber, _ favouriteSelected: Bool) {
-        self.summaryListInteractorInput?.findLatestSummaryList(with: productID, favouriteSelected)
+    func updateLatestView(_ productID: NSNumber, _ favouriteSelected: Bool) {
+        self.summaryListInteractorInput?.findLatestSummaryList(productID, favouriteSelected)
     }
 }
 
