@@ -28,7 +28,7 @@ print(urlString)
 
 do {
     let id: NSNumber? = 232323
-    print(id)
+    //print(id)
     let ppp = id ?? 0
     print(ppp)
     if let ppid = id {

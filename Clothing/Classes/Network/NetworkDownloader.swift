@@ -58,12 +58,12 @@ class NetworkDownloader: NSObject {
         }
 
         deinit {
-            print("farewell from Delegate")
+            //print("farewell from Delegate")
         }
     }
 
     deinit {
-        print("farewell from NetworkDownloader")
+        //print("farewell from NetworkDownloader")
         self.session.invalidateAndCancel()
     }
     
