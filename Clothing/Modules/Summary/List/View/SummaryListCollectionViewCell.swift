@@ -21,21 +21,20 @@ class SummaryListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewHeightLayoutConstraints: NSLayoutConstraint!
-    @IBOutlet weak var productNameTextView: UITextView! {
-        didSet {
-            self.productNameTextView?.textContainer.lineFragmentPadding = 0
-        }
-    }
-    @IBOutlet weak var heartButton: UIButton! {
-        didSet {
-            self.heartButton.addTarget(self, action: #selector(self.favourited), for: .touchUpInside)
-        }
-    }
-    
+    @IBOutlet weak var productNameTextView: UITextView!
+    @IBOutlet weak var heartButton: UIButton!
+
     var delegate: SummaryListCollectionViewCellDelegate?
     var productID: NSNumber!
     var favouriteSelected: Bool!
     var indexRow: Int!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.productNameTextView?.textContainer.lineFragmentPadding = 0
+        self.heartButton.addTarget(self, action: #selector(self.favourited), for: .touchUpInside)
+    }
 
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)

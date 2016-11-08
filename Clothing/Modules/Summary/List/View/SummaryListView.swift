@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SummaryListView: UIView {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }
