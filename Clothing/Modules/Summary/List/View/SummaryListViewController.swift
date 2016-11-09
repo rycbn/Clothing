@@ -93,7 +93,7 @@ extension SummaryListViewController: UICollectionViewDataSource {
             return 0
         }
 
-        return self.products.count
+        return self.products.count 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -156,14 +156,10 @@ extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
 
             let product = self.products[indexPath.item]
 
-            guard product.image == nil else {
+            guard product.image == nil && product.task == nil else {
                 return
             }
 
-            guard product.task == nil else {
-                return
-            }
-            
             guard let url = URL(string: product.imageURL) else {
                 return
             }

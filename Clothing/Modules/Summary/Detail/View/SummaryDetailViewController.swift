@@ -39,6 +39,7 @@ class SummaryDetailViewController: UIViewController {
         let detailImageURL = Utility.subtituteKey(in: APIKeys.detailImageURL, key: URLKeys.pid, value: String(describing: value))
         
         self.detailView.imageView.image = nil
+        self.detailView.imageView.alpha = 0
         self.detailView.indicator.startAnimating()
         
         guard let url = URL(string: detailImageURL) else {
@@ -51,6 +52,10 @@ class SummaryDetailViewController: UIViewController {
                 self.detailView.imageView?.image = image
                 self.detailView.indicator?.stopAnimating()
                 self.detailView.indicator?.hidesWhenStopped = true
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.detailView.imageView.alpha = 1.0
+                }
             }
         }
     }
