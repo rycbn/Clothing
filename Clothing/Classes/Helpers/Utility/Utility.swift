@@ -7,16 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Utility {
 
     class func getFormattedAmount(_ amount: NSNumber, _ divisor: NSNumber, _ code: String) -> String {
-
         let formatedAmount = Int(amount) / Int(divisor) as NSNumber
         let currencyStyle = self.getCurrencyValueStyle(formatedAmount)
         let currencySymbol = self.getCurrencySymbol(for: code)
         let formattedString = "\(currencySymbol)\(currencyStyle)"
-
         return formattedString
     }
 
@@ -34,10 +33,10 @@ class Utility {
     }
 
     class func subtituteKey(in method: String, key: String, value: String) -> String {
-        
         let formattedMethod = method.replacingOccurrences(of: "{\(key)}", with: value)
-
         return formattedMethod
     }
-
+    
 }
+
+

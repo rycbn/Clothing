@@ -20,14 +20,9 @@ class SummaryDetailRouter {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func mainStoryboard() -> UIStoryboard {
-        let storyboard = UIStoryboard(name: Identifier.main, bundle: Bundle.main)
-        return storyboard
-    }
-    
     func summaryDetailViewControllerFromStoryboard() -> SummaryDetailViewController {
-        let storyboard = self.mainStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: Identifier.summaryDetail) as! SummaryDetailViewController
+        let storyboard = UIStoryboard.mainStoryboard()
+        let viewController = storyboard.instantiateViewController(withIdentifier: ConstantKeys.Identifier.summaryDetailStoryboardID.rawValue) as! SummaryDetailViewController
         return viewController
     }
 }

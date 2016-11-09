@@ -8,9 +8,12 @@
 
 import Foundation
 
-struct Identifier {
-    static let main = "Main"
-    static let summaryList = "SummaryListStoryboardID"
-    static let summaryDetail = "SummaryDetailStoryboardID"
-    static let collectionViewCellID = "CollectionViewCellID"
+struct ConstantKeys {
+    enum Identifier: String {
+        case main
+        case summaryListStoryboardID
+        case summaryDetailStoryboardID
+        case collectionViewCellID
+    }
 }
+

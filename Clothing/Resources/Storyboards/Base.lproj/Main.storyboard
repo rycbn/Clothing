@@ -13,7 +13,7 @@
         <!--Summary List View Controller-->
         <scene sceneID="kGr-oY-GeW">
             <objects>
-                <viewController storyboardIdentifier="SummaryListStoryboardID" id="eDk-Wn-Njt" customClass="SummaryListViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="summaryListStoryboardID" id="eDk-Wn-Njt" customClass="SummaryListViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VVM-PC-WEG"/>
                         <viewControllerLayoutGuide type="bottom" id="S7o-g0-gVB"/>
@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="OBb-8c-hxm" customClass="SummaryListCollectionViewLayout" customModule="Clothing" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCellID" id="KJq-dW-pd9" customClass="SummaryListCollectionViewCell" customModule="Clothing" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCellID" id="KJq-dW-pd9" customClass="SummaryListCollectionViewCell" customModule="Clothing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -133,7 +133,7 @@
         <!--Summary Detail View Controller-->
         <scene sceneID="KXS-5e-XXy">
             <objects>
-                <viewController storyboardIdentifier="SummaryDetailStoryboardID" id="Guv-j5-t4l" customClass="SummaryDetailViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="summaryDetailStoryboardID" id="Guv-j5-t4l" customClass="SummaryDetailViewController" customModule="Clothing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z0K-PS-R2d"/>
                         <viewControllerLayoutGuide type="bottom" id="pT8-gJ-w36"/>
