@@ -26,7 +26,7 @@ class SummaryListRouter {
 
     func summaryListViewControllerFromStoryboard() -> SummaryListViewController {
         let storyboard = UIStoryboard.mainStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: ConstantKeys.Identifier.summaryListStoryboardID.rawValue) as! SummaryListViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: .summaryListStoryboardID) as! SummaryListViewController
         return viewController
     }
 

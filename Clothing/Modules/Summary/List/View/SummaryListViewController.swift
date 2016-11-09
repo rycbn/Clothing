@@ -98,7 +98,7 @@ extension SummaryListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstantKeys.Identifier.collectionViewCellID.rawValue, for: indexPath) as! SummaryListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .collectionViewCellID, for: indexPath) as! SummaryListCollectionViewCell
 
         return cell
     }

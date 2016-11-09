@@ -22,7 +22,7 @@ class SummaryDetailRouter {
     
     func summaryDetailViewControllerFromStoryboard() -> SummaryDetailViewController {
         let storyboard = UIStoryboard.mainStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: ConstantKeys.Identifier.summaryDetailStoryboardID.rawValue) as! SummaryDetailViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: .summaryDetailStoryboardID) as! SummaryDetailViewController
         return viewController
     }
     
