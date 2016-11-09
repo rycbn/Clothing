@@ -37,9 +37,11 @@ class SummaryListInteractor {
         }
         return upcomingItems
     }
+    
 }
 // MARK:- SummaryListInteractorInput
 extension SummaryListInteractor: SummaryListInteractorInput {
+    
     func findSummaryList() {
 
         let productCount = self.summaryListDataManager.productCountFromDataStore()
@@ -61,4 +63,5 @@ extension SummaryListInteractor: SummaryListInteractorInput {
         let upcommingItems = self.upcomingItems(from: products)
         self.summaryListInteractorOutput?.foundLatestSummaryList(upcommingItems)
     }
+    
 }

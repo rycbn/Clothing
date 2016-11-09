@@ -13,16 +13,9 @@ extension NetworkManager {
     func loadingSummaryListFromAPI(_ completionHandler: @escaping CompletionHandler) {
         let parameters = [String: String]()
         let method = Methods.summary
-        _ = self.taskForGET(with: method, parameters: parameters, completionHandler: { (resutls, error) in
-            DispatchQueue.main.async {
-                guard error == nil else {
-                    return completionHandler(nil, error)
-                }
-                guard let resutls = resutls else {
-                    return completionHandler(nil, error)
-                }
-                completionHandler(resutls, nil)
-            }
-        })
+        let _ = self.taskForGET(with: method, parameters: parameters) { (results) in
+            completionHandler(results)
+        }
     }
+    
 }

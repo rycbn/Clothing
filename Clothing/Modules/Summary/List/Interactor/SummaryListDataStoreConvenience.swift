@@ -11,13 +11,10 @@ import CoreData
 extension CoreDataStore {
 
     func insertProduct(from entries: [AnyObject]) -> [Product] {
-
         self.deleteProduct()
 
-        guard
-            let entityProduct = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.product, in: self.privateContext),
-            let entityPrice = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.price, in: self.privateContext)
-        else {
+        guard let entityProduct = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.product, in: self.privateContext),
+              let entityPrice = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.price, in: self.privateContext) else {
             return [Product]()
         }
 
@@ -44,7 +41,6 @@ extension CoreDataStore {
     }
 
     func allProduct() -> [Product] {
-
         let nameSort = NSSortDescriptor(key: JSONResponseKeys.name, ascending: true)
         let sort = [nameSort]
         let managedProduct = CoreDataOperator.objectForEntity(CoreDataStore.EntityName.product, context: self.privateContext, filter: nil, sort: sort) as! [ManagedProduct]
@@ -55,10 +51,8 @@ extension CoreDataStore {
     }
 
     func deleteProduct() {
-
-        _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.product, context: self.privateContext)
-        _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.price, context: self.privateContext)
-
+        let _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.product, context: self.privateContext)
+        let _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.price, context: self.privateContext)
     }
 
     func countProduct() -> Int {

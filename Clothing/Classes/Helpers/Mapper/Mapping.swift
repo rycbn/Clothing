@@ -9,8 +9,10 @@
 import Foundation
 
 protocol Mapping {
+    
     associatedtype Input
     associatedtype Output
 
     static func mapElement(_ element: Input) -> Output
+    
 }

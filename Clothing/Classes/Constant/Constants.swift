@@ -9,11 +9,13 @@
 import Foundation
 
 struct ConstantKeys {
+    
     enum Identifier: String {
         case main
         case summaryListStoryboardID
         case summaryDetailStoryboardID
         case collectionViewCellID
     }
+    
 }
 

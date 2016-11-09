@@ -16,9 +16,14 @@ enum NetworkError: Error {
     case url, data, json, error, response
 }
 
+enum NetworkResponse {
+    case onSuccess(AnyObject)
+    case onEror(NetworkError)
+}
+
 class NetworkManager {
 
-    typealias CompletionHandler = (AnyObject?, Error?) -> Void
+    typealias CompletionHandler = (NetworkResponse) -> Void
 
     lazy var session: NetworkURLSession = URLSession.shared
 
@@ -30,7 +35,8 @@ class NetworkManager {
         let urlString = APIKeys.baseURL + method +  NetworkManager.escapedParameters(parameters: mutableParameters)
 
         guard let url = URL(string: urlString) else {
-            completionHandler(nil, NetworkError.url)
+            let error = NetworkResponse.onEror(.url)
+            completionHandler(error)
             return URLSessionDataTask()
         }
 
@@ -40,13 +46,16 @@ class NetworkManager {
         let task = self.session.dataTask(with: request) { (data, response, error) in
 
             guard error == nil else {
-                return completionHandler(nil, NetworkError.error)
+                let error = NetworkResponse.onEror(.error)
+                return completionHandler(error)
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                return completionHandler(nil, NetworkError.response)
+                let error = NetworkResponse.onEror(.response)
+                return completionHandler(error)
             }
             guard let data = data else {
-                return completionHandler(nil, NetworkError.data)
+                let error = NetworkResponse.onEror(.data)
+                return completionHandler(error)
             }
             NetworkManager.parseringJSON(data, completionHandler: completionHandler)
         }
@@ -58,10 +67,12 @@ class NetworkManager {
 
     class func parseringJSON(_ data: Data, completionHandler: CompletionHandler) {
         do {
-            let parsedObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject?
-            completionHandler(parsedObject, nil)
+            let parsedObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            let success = NetworkResponse.onSuccess(parsedObject)
+            completionHandler(success)
         } catch {
-            completionHandler(nil, NetworkError.json)
+            let error = NetworkResponse.onEror(.json)
+            completionHandler(error)
         }
     }
 

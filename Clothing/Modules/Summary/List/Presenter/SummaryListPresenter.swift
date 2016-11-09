@@ -21,6 +21,7 @@ class SummaryListPresenter {
     func updateLatestSummaryListViewInterface(with products: [SummaryProduct]) {
         self.summaryListViewInterface?.reloadCellAtItem(products)
     }
+    
 }
 
 // MARK: - SummaryListModuelInterface
@@ -41,6 +42,7 @@ extension SummaryListPresenter: SummaryListModuleInterface {
     func updateLatestView(_ productID: NSNumber, _ favouriteSelected: Bool) {
         self.summaryListInteractorInput?.findLatestSummaryList(productID, favouriteSelected)
     }
+    
 }
 
 // MARK: - SummaryListInteractorOutput
@@ -65,4 +67,5 @@ extension SummaryListPresenter: SummaryListInteractorOutput {
         }
         self.updateLatestSummaryListViewInterface(with: products)
     }
+    
 }

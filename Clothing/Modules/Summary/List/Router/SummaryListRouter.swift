@@ -43,4 +43,5 @@ class SummaryListRouter {
         let navigationController = self.summaryListViewController?.navigationController
         self.summaryDetailRouter?.presentSummaryDetailInterface(from: navigationController, with: product)
     }
+    
 }

@@ -64,4 +64,5 @@ class SummaryListCollectionViewCell: UICollectionViewCell {
         self.favouriteSelected = !self.favouriteSelected
         self.delegate?.updateFavourite(self.indexRow, self.productID, self.favouriteSelected)
     }
+    
 }

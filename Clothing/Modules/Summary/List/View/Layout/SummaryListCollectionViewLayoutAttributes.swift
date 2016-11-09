@@ -31,4 +31,5 @@ class SummaryListCollectionViewLayoutAttributes: UICollectionViewLayoutAttribute
         }
         return false
     }
+    
 }

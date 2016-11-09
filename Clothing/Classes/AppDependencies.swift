@@ -45,4 +45,5 @@ class AppDependencies: NSObject {
         let summaryDetailRouter = SummaryDetailRouter()
         self.summaryListRouter.summaryDetailRouter = summaryDetailRouter
     }
+    
 }

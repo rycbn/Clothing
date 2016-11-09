@@ -49,6 +49,7 @@ class SummaryListViewController: UIViewController {
             layout.delegate = self
         }
     }
+    
 }
 // MARK: - SummaryListViewInterface
 extension SummaryListViewController: SummaryListViewInterface {
@@ -101,6 +102,7 @@ extension SummaryListViewController: UICollectionViewDataSource {
 
         return cell
     }
+    
 }
 // MARK: - Collection view delegate 
 extension SummaryListViewController: UICollectionViewDelegate {
@@ -143,6 +145,7 @@ extension SummaryListViewController: UICollectionViewDelegate {
         }
     }
     */
+    
 }
 // MARK: - Collection view data source prefetching
 extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
@@ -176,6 +179,7 @@ extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
             }
         }
     }
+    
 }
 // MARK: - Collection view custom layout delegate 
 extension SummaryListViewController: CollectionViewCellLayoutDelegate {
@@ -198,4 +202,5 @@ extension SummaryListViewController: CollectionViewCellLayoutDelegate {
         
         return height
     }
+    
 }

@@ -25,4 +25,5 @@ class SummaryDetailRouter {
         let viewController = storyboard.instantiateViewController(withIdentifier: ConstantKeys.Identifier.summaryDetailStoryboardID.rawValue) as! SummaryDetailViewController
         return viewController
     }
+    
 }

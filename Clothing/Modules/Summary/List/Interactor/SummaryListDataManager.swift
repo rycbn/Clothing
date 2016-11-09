@@ -14,29 +14,21 @@ class SummaryListDataManager {
     var coreDataStore: CoreDataStore?
 
     func loadSummaryList(onComplete: @escaping ([Product]?, Error?) -> Void) {
-        self.networkManager?.loadingSummaryListFromAPI { [weak self] (results, error) in
-
-            guard error == nil else {
-                onComplete(nil, error)
-                return
+        self.networkManager?.loadingSummaryListFromAPI{ [weak self] (results) in
+            switch results {
+            case .onEror(let error):
+                return onComplete(nil, error)
+            case .onSuccess(let response):
+                guard let items = response.value(forKey: JSONResponseKeys.summaries) as? [AnyObject] else {
+                    return
+                }
+                let products = self?.productFromDataStore(items)
+                onComplete(products, nil)
             }
-            guard let results = results else {
-                onComplete(nil, error)
-                return
-            }
-            guard let items = results.value(forKey: JSONResponseKeys.summaries) as? [AnyObject] else {
-                onComplete(nil, error)
-                return
-            }
-
-            let products = self?.productFromDataStore(items)
-            
-            onComplete(products, error)
         }
     }
 
     func productFromDataStore(_ entries: [AnyObject]) -> [Product] {
-
         guard let products = self.coreDataStore?.insertProduct(from: entries) else {
             return [Product]()
         }
@@ -44,7 +36,6 @@ class SummaryListDataManager {
     }
 
     func productCountFromDataStore() -> Int {
-
         guard let count = self.coreDataStore?.countProduct() else {
             return 0
         }
@@ -52,15 +43,13 @@ class SummaryListDataManager {
     }
 
     func allProductFromDataStore() -> [Product] {
-
         guard let products = self.coreDataStore?.allProduct() else {
             return [Product]()
         }
         return products
     }
     
-    func allLatestProductFromDataStore(_ productID: NSNumber, _ favouriteSelected: Bool) -> [Product] {        
-        
+    func allLatestProductFromDataStore(_ productID: NSNumber, _ favouriteSelected: Bool) -> [Product] {
         guard let products = self.coreDataStore?.allLatestProduct(productID, favouriteSelected) else {
             return [Product]()
         }

@@ -9,6 +9,7 @@
 import UIKit
 
 class SummaryProduct {
+    
     var id: NSNumber!
     var name: String!
     var favouriteSelected: Bool!
@@ -23,4 +24,5 @@ class SummaryProduct {
         let rect = NSString(string: name).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         return ceil(rect.height)
     }
+    
 }

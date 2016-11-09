@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIImage {
+    
     var decompressedImage: UIImage {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         draw(at: CGPoint.zero)
@@ -16,4 +17,5 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return decompressedImage!
     }
+    
 }

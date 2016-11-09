@@ -9,9 +9,7 @@
 import UIKit
 
 protocol CollectionViewCellLayoutDelegate {
-
     func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
-
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
 }
 
@@ -95,4 +93,5 @@ class SummaryListCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
     }
+    
 }

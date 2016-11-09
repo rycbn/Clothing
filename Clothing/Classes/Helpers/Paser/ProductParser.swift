@@ -23,4 +23,5 @@ struct ProductParser: Mapping {
         }
         return Product(id: id, name: name, favouriteSelected: element.favouriteSelected, currency: currency, divisor: divisor, amount: amount, imageURL: imageURL)
     }
+    
 }
