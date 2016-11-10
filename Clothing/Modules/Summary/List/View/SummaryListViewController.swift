@@ -19,14 +19,14 @@ class SummaryListViewController: UIViewController {
     var products: [SummaryProduct] = []
     var indexRow: Int!
 
-    lazy var configuration : URLSessionConfiguration = {
+    lazy var configuration: URLSessionConfiguration = {
         let config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = true
         config.urlCache = nil
         return config
     }()
 
-    lazy var downloader : NetworkDownloader = {
+    lazy var downloader: NetworkDownloader = {
         return NetworkDownloader(configuration:self.configuration)
     }()
 

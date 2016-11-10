@@ -12,11 +12,14 @@ import UIKit
 class SummaryDetailRouter {
     
     var summaryDetailViewController: SummaryDetailViewController?
+    var summaryDetailPresenter: SummaryDetailPresenter?
     
     func presentSummaryDetailInterface(from navigationController: UINavigationController?, with product: SummaryProduct) {
         let viewController = self.summaryDetailViewControllerFromStoryboard()
         viewController.product = product
+        viewController.eventHandler = self.summaryDetailPresenter
         self.summaryDetailViewController = viewController
+        self.summaryDetailPresenter?.summaryDetailViewInterface = viewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     

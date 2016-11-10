@@ -34,6 +34,10 @@
 		5E6B7BFD1DB9188E00B14365 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B7BFC1DB9188E00B14365 /* UIImage.swift */; };
 		E165E8E01DD3794F00657E6C /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8DF1DD3794F00657E6C /* UIStoryboard.swift */; };
 		E165E8E21DD3E71B00657E6C /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8E11DD3E71B00657E6C /* UICollectionView.swift */; };
+		E165E8E71DD4584D00657E6C /* SummaryDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8E61DD4584D00657E6C /* SummaryDetailProtocol.swift */; };
+		E165E8E91DD45B2400657E6C /* SummaryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8E81DD45B2400657E6C /* SummaryDetailPresenter.swift */; };
+		E165E8EB1DD4690200657E6C /* SummaryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EA1DD4690200657E6C /* SummaryDetailInteractor.swift */; };
+		E165E8ED1DD469A400657E6C /* SummaryDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EC1DD469A400657E6C /* SummaryDetailDataManager.swift */; };
 		E1B566CD1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */; };
 		E1B566CE1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */; };
 		E1B566CF1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */; };
@@ -108,6 +112,10 @@
 		5E6B7BFC1DB9188E00B14365 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E165E8DF1DD3794F00657E6C /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		E165E8E11DD3E71B00657E6C /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		E165E8E61DD4584D00657E6C /* SummaryDetailProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailProtocol.swift; sourceTree = "<group>"; };
+		E165E8E81DD45B2400657E6C /* SummaryDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailPresenter.swift; sourceTree = "<group>"; };
+		E165E8EA1DD4690200657E6C /* SummaryDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailInteractor.swift; sourceTree = "<group>"; };
+		E165E8EC1DD469A400657E6C /* SummaryDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailDataManager.swift; sourceTree = "<group>"; };
 		E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataManager.swift; sourceTree = "<group>"; };
 		E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataStoreConvenience.swift; sourceTree = "<group>"; };
 		E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListInteractor.swift; sourceTree = "<group>"; };
@@ -392,9 +400,37 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E165E8E31DD4580200657E6C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E165E8EA1DD4690200657E6C /* SummaryDetailInteractor.swift */,
+				E165E8EC1DD469A400657E6C /* SummaryDetailDataManager.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E165E8E41DD4580200657E6C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E165E8E81DD45B2400657E6C /* SummaryDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E165E8E51DD4580200657E6C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E165E8E61DD4584D00657E6C /* SummaryDetailProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		E1B566B81DCB8B0E00CCE3F3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				E165E8E31DD4580200657E6C /* Interactor */,
+				E165E8E41DD4580200657E6C /* Presenter */,
+				E165E8E51DD4580200657E6C /* Protocol */,
 				E1B566DA1DCB8BBE00CCE3F3 /* Router */,
 				E1B566DB1DCB8BBE00CCE3F3 /* View */,
 			);
@@ -635,13 +671,16 @@
 				5E0B5B821DB5D27900565BAC /* AppDependencies.swift in Sources */,
 				5E0B5BA71DB609E000565BAC /* NetworkManager.swift in Sources */,
 				E1B566CE1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift in Sources */,
+				E165E8EB1DD4690200657E6C /* SummaryDetailInteractor.swift in Sources */,
 				5E6B7BFB1DB9186E00B14365 /* Utility.swift in Sources */,
 				5E0B5BCD1DB6290E00565BAC /* Mapping.swift in Sources */,
 				5E0B5BCF1DB6292400565BAC /* ProductParser.swift in Sources */,
 				E1B566D11DCB8B0E00CCE3F3 /* SummaryProduct.swift in Sources */,
+				E165E8E91DD45B2400657E6C /* SummaryDetailPresenter.swift in Sources */,
 				5E0B5BAE1DB610C300565BAC /* Clothing.xcdatamodeld in Sources */,
 				E1B566D81DCB8B0E00CCE3F3 /* SummaryListView.swift in Sources */,
 				5E0B5BA81DB609E000565BAC /* RootRouter.swift in Sources */,
+				E165E8ED1DD469A400657E6C /* SummaryDetailDataManager.swift in Sources */,
 				5E0B5B7D1DB5D1CD00565BAC /* main.m in Sources */,
 				E1B566CF1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift in Sources */,
 				5E6B7BFD1DB9188E00B14365 /* UIImage.swift in Sources */,
@@ -660,6 +699,7 @@
 				E1B566E41DCB9C9100CCE3F3 /* Translations.swift in Sources */,
 				5E0B5B771DB5D1CD00565BAC /* AppDelegate.m in Sources */,
 				E165E8E21DD3E71B00657E6C /* UICollectionView.swift in Sources */,
+				E165E8E71DD4584D00657E6C /* SummaryDetailProtocol.swift in Sources */,
 				5E0B5BA61DB609E000565BAC /* NetworkDownloader.swift in Sources */,
 				5E0B5BC31DB6190100565BAC /* CoreDataOperator.swift in Sources */,
 				5E0B5BC01DB6129500565BAC /* ManagedProduct.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 typealias NetworkDownloaderCompletion = (URL?) -> ()
 
 let isMain = false

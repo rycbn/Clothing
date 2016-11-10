@@ -43,7 +43,14 @@ class AppDependencies: NSObject {
         
         // Summary Detail Module
         let summaryDetailRouter = SummaryDetailRouter()
+        let summaryDetailPresenter = SummaryDetailPresenter()
+        let summaryDetailDataManager = SummaryDetailDataManager()
+        let summaryDetailInteractor = SummaryDetailInteractor(summaryDetailDataManager)
+        
         self.summaryListRouter.summaryDetailRouter = summaryDetailRouter
+        summaryDetailRouter.summaryDetailPresenter = summaryDetailPresenter
+        summaryDetailPresenter.summaryDetailInteractorInput = summaryDetailInteractor
+        summaryDetailInteractor.summaryDetailInteractorOutput = summaryDetailPresenter
     }
     
 }
