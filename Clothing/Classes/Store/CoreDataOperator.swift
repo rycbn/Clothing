@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataOperator {
 
-    class func objectCountForEntity(_ entityName: String, context: NSManagedObjectContext) -> Int {
+    class func objectCountForEntity(_ entityName: EntityName, context: NSManagedObjectContext) -> Int {
         let request = CoreDataOperator.fetchRequest(entityName)
         do {
             return try context.count(for: request)
@@ -21,7 +21,7 @@ class CoreDataOperator {
         }
     }
 
-    class func objectForEntity(_ entityName: String, context: NSManagedObjectContext, filter: NSPredicate?, sort:[NSSortDescriptor]?) -> [AnyObject]? {
+    class func objectForEntity(_ entityName: EntityName, context: NSManagedObjectContext, filter: NSPredicate?, sort:[NSSortDescriptor]?) -> [AnyObject]? {
         let request = CoreDataOperator.fetchRequest(entityName)
         request.predicate = filter
         request.sortDescriptors = sort
@@ -33,7 +33,7 @@ class CoreDataOperator {
         }
     }
 
-    class func objectBatchDeletion(_ entityName: String, context: NSManagedObjectContext) {
+    class func objectBatchDeletion(_ entityName: EntityName, context: NSManagedObjectContext) {
         let request = CoreDataOperator.fetchRequest(entityName)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
         do {
@@ -43,8 +43,8 @@ class CoreDataOperator {
         }
     }
 
-    class func fetchRequest(_ entityName: String) -> NSFetchRequest<NSFetchRequestResult> {
-        return NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    class func fetchRequest(_ entityName: EntityName) -> NSFetchRequest<NSFetchRequestResult> {
+        return NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue.capitalized)
     }
     
 }

@@ -38,6 +38,8 @@
 		E165E8E91DD45B2400657E6C /* SummaryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8E81DD45B2400657E6C /* SummaryDetailPresenter.swift */; };
 		E165E8EB1DD4690200657E6C /* SummaryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EA1DD4690200657E6C /* SummaryDetailInteractor.swift */; };
 		E165E8ED1DD469A400657E6C /* SummaryDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EC1DD469A400657E6C /* SummaryDetailDataManager.swift */; };
+		E165E8EF1DD6250B00657E6C /* NSEntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EE1DD6250B00657E6C /* NSEntityDescription.swift */; };
+		E165E8F11DD9A6F800657E6C /* NSSortDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8F01DD9A6F800657E6C /* NSSortDescriptor.swift */; };
 		E1B566CD1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */; };
 		E1B566CE1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */; };
 		E1B566CF1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */; };
@@ -116,6 +118,8 @@
 		E165E8E81DD45B2400657E6C /* SummaryDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailPresenter.swift; sourceTree = "<group>"; };
 		E165E8EA1DD4690200657E6C /* SummaryDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailInteractor.swift; sourceTree = "<group>"; };
 		E165E8EC1DD469A400657E6C /* SummaryDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryDetailDataManager.swift; sourceTree = "<group>"; };
+		E165E8EE1DD6250B00657E6C /* NSEntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSEntityDescription.swift; sourceTree = "<group>"; };
+		E165E8F01DD9A6F800657E6C /* NSSortDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSSortDescriptor.swift; sourceTree = "<group>"; };
 		E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataManager.swift; sourceTree = "<group>"; };
 		E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataStoreConvenience.swift; sourceTree = "<group>"; };
 		E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListInteractor.swift; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 				5E6B7BFC1DB9188E00B14365 /* UIImage.swift */,
 				E165E8DF1DD3794F00657E6C /* UIStoryboard.swift */,
 				E165E8E11DD3E71B00657E6C /* UICollectionView.swift */,
+				E165E8EE1DD6250B00657E6C /* NSEntityDescription.swift */,
+				E165E8F01DD9A6F800657E6C /* NSSortDescriptor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -701,10 +707,12 @@
 				E165E8E21DD3E71B00657E6C /* UICollectionView.swift in Sources */,
 				E165E8E71DD4584D00657E6C /* SummaryDetailProtocol.swift in Sources */,
 				5E0B5BA61DB609E000565BAC /* NetworkDownloader.swift in Sources */,
+				E165E8EF1DD6250B00657E6C /* NSEntityDescription.swift in Sources */,
 				5E0B5BC31DB6190100565BAC /* CoreDataOperator.swift in Sources */,
 				5E0B5BC01DB6129500565BAC /* ManagedProduct.swift in Sources */,
 				E1B566D61DCB8B0E00CCE3F3 /* SummaryListCollectionViewLayoutAttributes.swift in Sources */,
 				E1B566D91DCB8B0E00CCE3F3 /* SummaryListViewController.swift in Sources */,
+				E165E8F11DD9A6F800657E6C /* NSSortDescriptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

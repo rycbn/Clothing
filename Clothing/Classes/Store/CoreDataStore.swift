@@ -17,13 +17,7 @@ enum CoreDataError: Error {
 
 class CoreDataStore {
 
-    struct EntityName {
-        static let product = "Product"
-        static let price = "Price"
-    }
-
     static let modelName = "Clothing"
-
 
     fileprivate lazy var persistentContainer: NSPersistentContainer = {
         $0.loadPersistentStores(completionHandler: { (storeDescription, error) in

@@ -13,8 +13,8 @@ extension CoreDataStore {
     func insertProduct(from entries: [AnyObject]) -> [Product] {
         self.deleteProduct()
 
-        guard let entityProduct = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.product, in: self.privateContext),
-              let entityPrice = NSEntityDescription.entity(forEntityName: CoreDataStore.EntityName.price, in: self.privateContext) else {
+        guard let entityProduct = NSEntityDescription.entity(forEntityName: .product, in: self.privateContext),
+              let entityPrice = NSEntityDescription.entity(forEntityName: .price, in: self.privateContext) else {
             return [Product]()
         }
 
@@ -27,7 +27,6 @@ extension CoreDataStore {
             price.currency = entry.value(forKeyPath: JSONResponseKeyPaths.currency) as? String
             price.divisor = entry.value(forKeyPath: JSONResponseKeyPaths.divisor) as? NSNumber
             price.amount = entry.value(forKeyPath: JSONResponseKeyPaths.amount) as? NSNumber
-
             product.price = price
             let value = product.id ?? 0
             product.imageURL = Utility.subtituteKey(in: APIKeys.imageURL, key: URLKeys.pid, value: String(describing: value))
@@ -41,9 +40,9 @@ extension CoreDataStore {
     }
 
     func allProduct() -> [Product] {
-        let nameSort = NSSortDescriptor(key: JSONResponseKeys.name, ascending: true)
+        let nameSort = NSSortDescriptor(key: .name, ascending: true)
         let sort = [nameSort]
-        let managedProduct = CoreDataOperator.objectForEntity(CoreDataStore.EntityName.product, context: self.privateContext, filter: nil, sort: sort) as! [ManagedProduct]
+        let managedProduct = CoreDataOperator.objectForEntity(.product, context: self.privateContext, filter: nil, sort: sort) as! [ManagedProduct]
 
         return managedProduct.map { dictionary in
             return ProductParser.mapElement(dictionary)
@@ -51,17 +50,17 @@ extension CoreDataStore {
     }
 
     func deleteProduct() {
-        let _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.product, context: self.privateContext)
-        let _ = CoreDataOperator.objectBatchDeletion(CoreDataStore.EntityName.price, context: self.privateContext)
+        let _ = CoreDataOperator.objectBatchDeletion(.product, context: self.privateContext)
+        let _ = CoreDataOperator.objectBatchDeletion(.price, context: self.privateContext)
     }
 
     func countProduct() -> Int {
-        let count = CoreDataOperator.objectCountForEntity(CoreDataStore.EntityName.product, context: self.privateContext)
+        let count = CoreDataOperator.objectCountForEntity(.product, context: self.privateContext)
         return count
     }
     
     func allLatestProduct(_ productID: NSNumber, _ favouriteSelected: Bool) -> [Product]? {
-        let request = CoreDataOperator.fetchRequest(CoreDataStore.EntityName.product)
+        let request = CoreDataOperator.fetchRequest(.product)
         request.predicate = NSPredicate(format: "%K = %@", JSONResponseKeys.id, productID)
         do {
             let results = try self.privateContext.fetch(request) as! [ManagedProduct]
