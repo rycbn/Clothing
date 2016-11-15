@@ -17,14 +17,10 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
     self.appDependencies = [[AppDependencies alloc] init];
     [self.appDependencies installRootViewControllerInto:self.window];
-
     return YES;
 }
-
 
 @end

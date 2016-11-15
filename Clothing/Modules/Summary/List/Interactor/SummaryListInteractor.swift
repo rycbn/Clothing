@@ -11,7 +11,6 @@ import UIKit
 class SummaryListInteractor {
 
     var summaryListInteractorOutput: SummaryListInteractorOutput?
-
     let summaryListDataManager: SummaryListDataManager
 
     init(_ summaryListDataManager: SummaryListDataManager) {
@@ -43,9 +42,7 @@ class SummaryListInteractor {
 extension SummaryListInteractor: SummaryListInteractorInput {
     
     func findSummaryList() {
-
         let productCount = self.summaryListDataManager.productCountFromDataStore()
-
         if productCount == 0 {
             self.summaryListDataManager.loadSummaryList { [weak self] (products, error) in
                 let upcomingItems = self?.upcomingItems(from: products)
@@ -63,5 +60,11 @@ extension SummaryListInteractor: SummaryListInteractorInput {
         let upcommingItems = self.upcomingItems(from: products)
         self.summaryListInteractorOutput?.foundLatestSummaryList(upcommingItems)
     }
+    
+    //func fetchImage(withURL url: URL) {
+    //    self.summaryListDataManager.fetchingImaga(withURL: url) { [weak self] data in
+    //        self?.summaryListInteractorOutput?.fetchedImage(with: data)
+    //    }
+    //}
     
 }

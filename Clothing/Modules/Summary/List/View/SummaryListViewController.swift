@@ -72,13 +72,20 @@ extension SummaryListViewController: SummaryListViewInterface {
         let indexPath = IndexPath(item: self.indexRow, section: 0)
         self.mainView.collectionView.reloadItems(at: [indexPath])
     }
+    
+    //func reloadCellAtItem(_ data: Data) {
+    //
+    //}
+        
 }
 // MARK: - Collection view cell delegate
 extension SummaryListViewController: SummaryListCollectionViewCellDelegate {
+    
     func updateFavourite(_ indexRow: Int, _ productID: NSNumber, _ favouriteSelected: Bool) {
         self.indexRow = indexRow
         self.eventHandler?.updateLatestView(productID, favouriteSelected)
     }
+    
 }
 // MARK: - Collection view data source
 extension SummaryListViewController: UICollectionViewDataSource {
@@ -88,18 +95,14 @@ extension SummaryListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         guard self.products.count != 0 else {
             return 0
         }
-
         return self.products.count 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .collectionViewCellID, for: indexPath) as! SummaryListCollectionViewCell
-
         return cell
     }
     
@@ -108,17 +111,13 @@ extension SummaryListViewController: UICollectionViewDataSource {
 extension SummaryListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
         guard let cell = cell as? SummaryListCollectionViewCell else {
             fatalError("Error with register cell")
         }
-
         let product = self.products[indexPath.item]
-
         cell.configure(for: indexPath.item, product.id, product.name, product.currencyAmount, product.image, product.favouriteSelected)
         cell.delegate = self
         cell.isExclusiveTouch = true
-        
         if product.task == nil && product.image == nil {
             cell.indicator?.startAnimating()
             self.collectionView(collectionView, prefetchItemsAt: [indexPath])
@@ -151,28 +150,28 @@ extension SummaryListViewController: UICollectionViewDelegate {
 extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-
         for indexPath in indexPaths {
-
             let product = self.products[indexPath.item]
-
             guard product.image == nil && product.task == nil else {
                 return
             }
-
             guard let url = URL(string: product.imageURL) else {
                 return
             }
             
             product.task = self.downloader.download(url) { url in
-
                 product.task = nil
-
                 if let url = url, let data = try? Data(contentsOf: url) {
                     product.image = UIImage(data: data)
                     collectionView.reloadItems(at: [indexPath])
                 }
             }
+ 
+            //product.task = self.eventHandler?.updateCell(url) { data in
+            //    product.task = nil
+            //    product.image = UIImage(data: data)
+            //    collectionView.reloadItems(at: [indexPath])
+            //}
         }
     }
     
@@ -181,21 +180,17 @@ extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
 extension SummaryListViewController: CollectionViewCellLayoutDelegate {
 
     func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
-
         let defaultImageSize = CGSize(width: 150, height: 240)
         let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
         let rect = AVMakeRect(aspectRatio: defaultImageSize, insideRect: boundingRect)
-
         return rect.size.height
     }
 
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat {
-
         let annotationPadding: CGFloat = 4.0
         let annotationHeaderHeight: CGFloat = 17.0
         let productNameHeight: CGFloat = 70.0
         let height = annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
-        
         return height
     }
     

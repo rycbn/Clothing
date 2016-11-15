@@ -31,7 +31,6 @@ class SummaryListCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
         self.productNameTextView?.textContainer.lineFragmentPadding = 0
         self.heartButton.addTarget(self, action: #selector(self.favourited), for: .touchUpInside)
     }

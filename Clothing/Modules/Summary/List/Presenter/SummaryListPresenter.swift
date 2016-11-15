@@ -22,6 +22,10 @@ class SummaryListPresenter {
         self.summaryListViewInterface?.reloadCellAtItem(products)
     }
     
+    //func updateCollectionViewCell(with data: Data) {
+        //self.summaryListViewInterface?.showDisplay(with: data)
+    //}
+    
 }
 
 // MARK: - SummaryListModuelInterface
@@ -42,6 +46,10 @@ extension SummaryListPresenter: SummaryListModuleInterface {
     func updateLatestView(_ productID: NSNumber, _ favouriteSelected: Bool) {
         self.summaryListInteractorInput?.findLatestSummaryList(productID, favouriteSelected)
     }
+    
+    //func updateCell(_ url: URL, onComplete: @escaping (_ data: Data) -> Void) -> URLSessionTask {
+    //    self.summaryListInteractorInput?.fetchImage(withURL: url)
+    //}
     
 }
 
@@ -67,5 +75,9 @@ extension SummaryListPresenter: SummaryListInteractorOutput {
         }
         self.updateLatestSummaryListViewInterface(with: products)
     }
+    
+    //func fetchedImage(with data: Data) {
+    //    self.updateCollectionViewCell(with: data)
+    //}
     
 }
