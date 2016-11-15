@@ -25,6 +25,7 @@ protocol SummaryListModuleInterface {
     func requestAlert()
     func nextView(with product: SummaryProduct)
     func updateLatestView(_ productID: NSNumber, _ favouriteSelected: Bool)
+    func nextView(with viewController: SummaryDetailViewController)
     //func updateCell(_ url: URL, onComplete: @escaping (_ data: Data) -> Void) -> URLSessionTask
 }
 

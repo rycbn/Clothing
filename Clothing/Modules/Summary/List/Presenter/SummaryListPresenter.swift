@@ -47,6 +47,10 @@ extension SummaryListPresenter: SummaryListModuleInterface {
         self.summaryListInteractorInput?.findLatestSummaryList(productID, favouriteSelected)
     }
     
+    func nextView(with viewController: SummaryDetailViewController) {
+        self.summaryListRouter?.showSummaryDetailInterface3DTouch(with: viewController)
+    }
+    
     //func updateCell(_ url: URL, onComplete: @escaping (_ data: Data) -> Void) -> URLSessionTask {
     //    self.summaryListInteractorInput?.fetchImage(withURL: url)
     //}

@@ -18,9 +18,21 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self configureApplicaiton];
+    return YES;
+}
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    if ([shortcutItem.type isEqualToString:@"com.rycbn.home"]) {
+        [self configureApplicaiton];
+        completionHandler(YES);
+    }
+    completionHandler(NO);
+}
+
+- (void)configureApplicaiton {
     self.appDependencies = [[AppDependencies alloc] init];
     [self.appDependencies installRootViewControllerInto:self.window];
-    return YES;
 }
 
 @end

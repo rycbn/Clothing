@@ -17,6 +17,7 @@ class SummaryDetailRouter {
     func presentSummaryDetailInterface(from navigationController: UINavigationController?, with product: SummaryProduct) {
         let viewController = self.summaryDetailViewControllerFromStoryboard()
         viewController.product = product
+        viewController.isPreviewing = false
         viewController.eventHandler = self.summaryDetailPresenter
         self.summaryDetailViewController = viewController
         self.summaryDetailPresenter?.summaryDetailViewInterface = viewController
@@ -29,4 +30,9 @@ class SummaryDetailRouter {
         return viewController
     }
     
+    func presentSummaryDetailInterface3DTouch(from navigationController: UINavigationController?, inViewController viewController: SummaryDetailViewController) {
+        viewController.eventHandler = self.summaryDetailPresenter
+        self.summaryDetailPresenter?.summaryDetailViewInterface = viewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

@@ -22,5 +22,4 @@ protocol SummaryDetailModuleInterface {
 
 protocol SummaryDetailViewInterface {
     func showDisplay(with data: Data)
-    func reloadEntries()
 }

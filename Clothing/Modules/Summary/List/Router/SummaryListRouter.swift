@@ -44,4 +44,8 @@ class SummaryListRouter {
         self.summaryDetailRouter?.presentSummaryDetailInterface(from: navigationController, with: product)
     }
     
+    func showSummaryDetailInterface3DTouch(with viewController: SummaryDetailViewController) {
+        let navigationController = self.summaryListViewController?.navigationController
+        self.summaryDetailRouter?.presentSummaryDetailInterface3DTouch(from: navigationController, inViewController: viewController)
+    }
 }

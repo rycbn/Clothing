@@ -33,7 +33,9 @@ class SummaryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Translation.clothing
+        self.configureApplicationShortcutItem()
         self.configureDataSourceDelegate()
+        self.configure3DTouch()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +43,23 @@ class SummaryListViewController: UIViewController {
         self.eventHandler?.updateView()
     }
 
+    func configureApplicationShortcutItem() {
+        let shortcut = UIMutableApplicationShortcutItem(type: "com.rycbn.home", localizedTitle: "Home", localizedSubtitle: "Summary List", icon: UIApplicationShortcutIcon(type: .home), userInfo: nil)
+        UIApplication.shared.shortcutItems = [shortcut]
+    }
+    
     func configureDataSourceDelegate() {
         self.mainView.collectionView.delegate = self
         self.mainView.collectionView.dataSource = self
         self.mainView.collectionView.prefetchDataSource = self
         if let layout = self.mainView.collectionView.collectionViewLayout as? SummaryListCollectionViewLayout {
             layout.delegate = self
+        }
+    }
+    
+    func configure3DTouch() {
+        if self.traitCollection.forceTouchCapability == .available {
+            self.registerForPreviewing(with: self, sourceView: self.mainView.collectionView)
         }
     }
     
@@ -133,7 +146,6 @@ extension SummaryListViewController: UICollectionViewDelegate {
         let product = self.products[indexPath.item]
         self.eventHandler?.nextView(with: product)
     }
-    
     /*
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
@@ -166,7 +178,6 @@ extension SummaryListViewController: UICollectionViewDataSourcePrefetching {
                     collectionView.reloadItems(at: [indexPath])
                 }
             }
- 
             //product.task = self.eventHandler?.updateCell(url) { data in
             //    product.task = nil
             //    product.image = UIImage(data: data)
@@ -192,6 +203,29 @@ extension SummaryListViewController: CollectionViewCellLayoutDelegate {
         let productNameHeight: CGFloat = 70.0
         let height = annotationHeaderHeight + productNameHeight + (annotationPadding * 2)
         return height
+    }
+    
+}
+// MARK:- 
+extension SummaryListViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = self.mainView.collectionView.indexPathForItem(at: location),
+              let cell = self.mainView.collectionView.cellForItem(at: indexPath),
+              let viewController = self.storyboard?.instantiateViewController(withIdentifier: .summaryDetailStoryboardID) as? SummaryDetailViewController  else {
+            return nil
+        }
+        let product = self.products[indexPath.item]
+        viewController.product = product
+        viewController.isPreviewing = true
+        viewController.preferredContentSize = CGSize(width: 0, height: 0)
+        previewingContext.sourceRect = cell.frame
+        return viewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        //self.showDetailViewController(viewControllerToCommit, sender: self)
+        self.eventHandler?.nextView(with: viewControllerToCommit as! SummaryDetailViewController)
     }
     
 }
