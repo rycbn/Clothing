@@ -1,5 +1,5 @@
 //
-//  NSSortDescriptor.swift
+//  SortDescriptor.swift
 //  Clothing
 //
 //  Created by Chau Boon Yong on 14/11/2016.

@@ -35,4 +35,5 @@ class SummaryDetailRouter {
         self.summaryDetailPresenter?.summaryDetailViewInterface = viewController
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
 }

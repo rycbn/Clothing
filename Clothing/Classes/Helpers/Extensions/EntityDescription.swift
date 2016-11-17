@@ -1,5 +1,5 @@
 //
-//  NSEntityDescription.swift
+//  EntityDescription.swift
 //  Clothing
 //
 //  Created by Chau Boon Yong on 11/11/2016.

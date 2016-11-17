@@ -1,5 +1,5 @@
 //
-//  UIStoryboard.swift
+//  Storyboard.swift
 //  Clothing
 //
 //  Created by Chau Boon Yong on 09/11/2016.

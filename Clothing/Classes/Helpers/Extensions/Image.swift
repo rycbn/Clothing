@@ -1,5 +1,5 @@
 //
-//  UIImage.swift
+//  Image.swift
 //  Clothing
 //
 //  Created by Roger Yong on 20/10/2016.

@@ -44,7 +44,7 @@ class SummaryListViewController: UIViewController {
     }
 
     func configureApplicationShortcutItem() {
-        let shortcut = UIMutableApplicationShortcutItem(type: "com.rycbn.home", localizedTitle: "Home", localizedSubtitle: "Summary List", icon: UIApplicationShortcutIcon(type: .home), userInfo: nil)
+        let shortcut = UIApplicationShortcutItem(type: .home, localizedTitle: .home, localizedSubtitle: .summaryList, icon: UIApplicationShortcutIcon(type: .home), userInfo: nil)        
         UIApplication.shared.shortcutItems = [shortcut]
     }
     

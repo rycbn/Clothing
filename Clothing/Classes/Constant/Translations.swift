@@ -15,5 +15,7 @@ struct Translation {
     static let ok = "OK"
     static let clothing = "Clothing"
     static let detail = "Detail"
+    static let home = "Home"
+    static let summaryList = "Summary List"
     
 }
