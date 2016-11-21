@@ -31,10 +31,8 @@ class SummaryListRouter {
     }
 
     func showAlert() {
-        let title = Translation.sorry
-        let message = Translation.somethingWrong
-        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Translation.ok, style: .default, handler: nil)
+        let alertViewController = UIAlertController(title: .sorry, message: .somethingWrong, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: .ok, style: .default, handler: nil)
         alertViewController.addAction(okAction)
         self.summaryListViewController?.present(alertViewController, animated: true, completion: nil)
     }

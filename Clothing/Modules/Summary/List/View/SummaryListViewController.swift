@@ -32,7 +32,7 @@ class SummaryListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Translation.clothing
+        self.title = .clothing
         self.configureApplicationShortcutItem()
         self.configureDataSourceDelegate()
         self.configure3DTouch()
@@ -44,7 +44,7 @@ class SummaryListViewController: UIViewController {
     }
 
     func configureApplicationShortcutItem() {
-        let shortcut = UIApplicationShortcutItem(type: .home, localizedTitle: .home, localizedSubtitle: .summaryList, icon: UIApplicationShortcutIcon(type: .home), userInfo: nil)        
+        let shortcut = UIApplicationShortcutItem(type: .homeType, localizedTitle: .home, localizedSubtitle: .summaryList, icon: UIApplicationShortcutIcon(type: .home), userInfo: nil)
         UIApplication.shared.shortcutItems = [shortcut]
     }
     

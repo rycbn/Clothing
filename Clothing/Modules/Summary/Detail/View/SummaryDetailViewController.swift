@@ -31,7 +31,7 @@ class SummaryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Translation.detail
+        self.title = .detail
         if self.isPreviewing == true {
             self.configureViewIn3DTouch(withValue: self.product.id)
         } else {

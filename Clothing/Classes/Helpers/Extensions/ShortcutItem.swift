@@ -8,21 +8,14 @@
 
 import UIKit
 
-enum ShortcutItem: String {
-    case home = "com.rycbn.home"
-
-    enum LocalizedTitle: String {
-        case home = "Home"
-    }
-    enum LocalizedSubtitle: String {
-        case summaryList = "Summary List"
-    }
+enum ShortcutItemType: String {
+    case homeType = "com.rycbn.home"
 }
 
 extension UIApplicationShortcutItem {
 
-    convenience init(type: ShortcutItem, localizedTitle title: ShortcutItem.LocalizedTitle, localizedSubtitle subtitle: ShortcutItem.LocalizedSubtitle?, icon: UIApplicationShortcutIcon?, userInfo: [AnyHashable : Any]? = nil) {
-        self.init(type: type.rawValue, localizedTitle: title.rawValue, localizedSubtitle: subtitle?.rawValue, icon: icon, userInfo: userInfo)
+    convenience init(type: ShortcutItemType, localizedTitle title: String, localizedSubtitle subtitle: String?, icon: UIApplicationShortcutIcon?, userInfo: [AnyHashable : Any]? = nil) {
+        self.init(type: type.rawValue, localizedTitle: title, localizedSubtitle: subtitle, icon: icon, userInfo: userInfo)
     }
     
 }
