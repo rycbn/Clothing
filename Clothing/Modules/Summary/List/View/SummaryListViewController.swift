@@ -30,6 +30,10 @@ class SummaryListViewController: UIViewController {
         return NetworkDownloader(configuration:self.configuration)
     }()
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = .clothing
@@ -217,7 +221,6 @@ extension SummaryListViewController: UIViewControllerPreviewingDelegate {
         }
         let product = self.products[indexPath.item]
         viewController.product = product
-        viewController.isPreviewing = true
         viewController.preferredContentSize = CGSize(width: 0, height: 0)
         previewingContext.sourceRect = cell.frame
         return viewController

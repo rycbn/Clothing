@@ -10,7 +10,23 @@ import UIKit
 
 class SummaryDetailView: UIView {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: AsyncImageView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.imageView.indicator = self.indicator
+    }
+    
+    func configureImageViewFrom(_ url: URL) {
+        self.imageView.url = url
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.imageView.alpha = 1
+        }
+    }
 
 }
