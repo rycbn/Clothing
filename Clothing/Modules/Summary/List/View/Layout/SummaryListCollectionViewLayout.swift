@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol CollectionViewCellLayoutDelegate {
+protocol CollectionViewCellLayoutDelegate: class {
     func collectionView(_ collectionView: UICollectionView, heightForImageAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
     func collectionView(_ collectionView: UICollectionView, heightForAnnotationAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
 }
 
 class SummaryListCollectionViewLayout: UICollectionViewLayout {
 
-    var delegate: CollectionViewCellLayoutDelegate!
+    weak var delegate: CollectionViewCellLayoutDelegate?
     var numberOfColumns = 2
     var cellPadding: CGFloat = 6
 
@@ -55,8 +55,8 @@ class SummaryListCollectionViewLayout: UICollectionViewLayout {
             for item in 0..<numberOfItemsInSection {
                 let indexPath = IndexPath(item: item, section: 0)
                 let width = columnWidth - (cellPadding * 2)
-                let imageHeight = self.delegate.collectionView(collectionView, heightForImageAt: indexPath, with: width)
-                let annotationHeight = self.delegate.collectionView(collectionView, heightForAnnotationAt: indexPath, with: width)
+                let imageHeight = self.delegate?.collectionView(collectionView, heightForImageAt: indexPath, with: width) ?? 0
+                let annotationHeight = self.delegate?.collectionView(collectionView, heightForAnnotationAt: indexPath, with: width) ?? 0
                 let height = imageHeight + annotationHeight + (cellPadding * 2)
                 let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
                 let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)

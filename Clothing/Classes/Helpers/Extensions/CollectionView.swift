@@ -18,4 +18,8 @@ extension UICollectionView {
         return self.dequeueReusableCell(withReuseIdentifier: identifier.rawValue, for: indexPath)
     }
     
+    func register(_ cellClass: Swift.AnyClass?, forCellWithReuseIdentifier identifier: CollectionViewCellIdentifier) {
+        self.register(cellClass, forCellWithReuseIdentifier: identifier.rawValue)
+    }
+    
 }

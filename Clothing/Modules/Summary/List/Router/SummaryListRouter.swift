@@ -12,21 +12,21 @@ import UIKit
 class SummaryListRouter {
   
     var rootRouter: RootRouter?
-    var summaryListViewController: SummaryListViewController?
+    var summaryListViewController: SummaryListCollectionViewController?
     var summaryListPresenter: SummaryListPresenter?
     var summaryDetailRouter: SummaryDetailRouter?
 
     func presentSummaryListInterface(from window: UIWindow) {
-        let viewController = self.summaryListViewControllerFromStoryboard()
+        let viewController = self.summaryListCollectionViewControllerFromStoryboard()
         viewController.eventHandler = self.summaryListPresenter
         self.summaryListViewController = viewController
         self.summaryListPresenter?.summaryListViewInterface = viewController
         self.rootRouter?.showRoot(viewController, inWindow: window)
     }
 
-    func summaryListViewControllerFromStoryboard() -> SummaryListViewController {
+    func summaryListCollectionViewControllerFromStoryboard() -> SummaryListCollectionViewController {
         let storyboard = UIStoryboard.mainStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: .summaryListStoryboardID) as! SummaryListViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: .summaryListStoryboardID) as! SummaryListCollectionViewController
         return viewController
     }
 

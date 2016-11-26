@@ -8,15 +8,19 @@
 
 import UIKit
 
-protocol SummaryListCollectionViewCellDelegate {
+protocol SummaryListCollectionViewCellDelegate: class {
     func updateFavourite(_ indexRow: Int, _ productID: NSNumber, _ favouriteSelected: Bool)
 }
 
 class SummaryListCollectionViewCell: UICollectionViewCell {
 
+    weak var delegate: SummaryListCollectionViewCellDelegate?
+    var productID: NSNumber!
+    var favouriteSelected: Bool!
+    var indexRow: Int!
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    //@IBOutlet weak var productNameTextLabel: UILabel!
     @IBOutlet weak var priceTextLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
@@ -24,30 +28,28 @@ class SummaryListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productNameTextView: UITextView!
     @IBOutlet weak var heartButton: UIButton!
 
-    var delegate: SummaryListCollectionViewCellDelegate?
-    var productID: NSNumber!
-    var favouriteSelected: Bool!
-    var indexRow: Int!
-    
+    @IBAction func favourited(_ sender: UIButton) {
+        self.favouriteSelected = !self.favouriteSelected
+        self.delegate?.updateFavourite(self.indexRow, self.productID, self.favouriteSelected)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.productNameTextView?.textContainer.lineFragmentPadding = 0
-        self.heartButton.addTarget(self, action: #selector(self.favourited), for: .touchUpInside)
     }
 
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
         if let attributes = layoutAttributes as? SummaryListCollectionViewLayoutAttributes {
-            imageViewHeightLayoutConstraint.constant = attributes.imageHeight
-            textViewHeightLayoutConstraints.constant = attributes.textHeight
+            self.imageViewHeightLayoutConstraint.constant = attributes.imageHeight
+            self.textViewHeightLayoutConstraints.constant = attributes.textHeight
         }
     }
-
+    
     func configure(for indexRow: Int, _ id: NSNumber?, _ name: String?, _ price: String?, _ image: UIImage?, _ favourite: Bool?) {
         self.indexRow = indexRow
         self.productID = id
         self.productNameTextView?.text = name
-        //self.productNameTextLabel?.text = name
         self.priceTextLabel?.text = price
         self.imageView?.image = image?.decompressedImage
         self.favouriteSelected = favourite
@@ -59,9 +61,5 @@ class SummaryListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func favourited() {
-        self.favouriteSelected = !self.favouriteSelected
-        self.delegate?.updateFavourite(self.indexRow, self.productID, self.favouriteSelected)
-    }
     
 }

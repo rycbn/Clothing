@@ -13,17 +13,6 @@ class SummaryListDataManager {
     var networkManager: NetworkManager?
     var coreDataStore: CoreDataStore?
 
-    lazy var configuration : URLSessionConfiguration = {
-        let config = URLSessionConfiguration.ephemeral
-        config.allowsCellularAccess = true
-        config.urlCache = nil
-        return config
-    }()
-    
-    lazy var downloader : NetworkDownloader = {
-        return NetworkDownloader(configuration:self.configuration)
-    }()
-
     func loadSummaryList(onComplete: @escaping ([Product]?, Error?) -> Void) {
         self.networkManager?.loadingSummaryListFromAPI{ [weak self] (results) in
             switch results {
@@ -35,14 +24,6 @@ class SummaryListDataManager {
                 }
                 let products = self?.productFromDataStore(items)
                 onComplete(products, nil)
-            }
-        }
-    }
-    
-    func fetchingImaga(withURL url: URL, onComplete: @escaping (_ data: Data) -> Void) {
-        self.downloader.download(url) { url in
-            if let url = url, let data = try? Data(contentsOf: url) {
-                onComplete(data)
             }
         }
     }

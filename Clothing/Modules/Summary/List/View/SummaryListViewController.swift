@@ -11,10 +11,6 @@ import AVFoundation
 
 class SummaryListViewController: UIViewController {
 
-    var mainView: SummaryListView {
-        return view as! SummaryListView
-    }
-
     var eventHandler: SummaryListModuleInterface?
     var products: [SummaryProduct] = []
     var indexRow: Int!
@@ -227,7 +223,6 @@ extension SummaryListViewController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        //self.showDetailViewController(viewControllerToCommit, sender: self)
         self.eventHandler?.nextView(with: viewControllerToCommit as! SummaryDetailViewController)
     }
     

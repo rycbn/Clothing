@@ -65,7 +65,7 @@ class NetworkManager {
         return task
     }
 
-    class func parseringJSON(_ data: Data, completionHandler: CompletionHandler) {
+    private class func parseringJSON(_ data: Data, completionHandler: CompletionHandler) {
         do {
             let parsedObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             let success = NetworkResponse.onSuccess(parsedObject)
@@ -76,7 +76,7 @@ class NetworkManager {
         }
     }
 
-    class func escapedParameters(parameters: [String : String]) -> String {
+    private class func escapedParameters(parameters: [String : String]) -> String {
         var urlVars = [String]()
         for (key, value) in parameters {
             let stringValue = "\(value)"
