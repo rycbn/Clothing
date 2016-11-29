@@ -37,6 +37,7 @@
 		E165E8EF1DD6250B00657E6C /* EntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8EE1DD6250B00657E6C /* EntityDescription.swift */; };
 		E165E8F11DD9A6F800657E6C /* SortDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E165E8F01DD9A6F800657E6C /* SortDescriptor.swift */; };
 		E18F885C1DE8993F004576CC /* SummaryListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F885B1DE8993F004576CC /* SummaryListCollectionViewController.swift */; };
+		E18F88601DEE0FD2004576CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F885F1DEE0FD2004576CC /* AppDelegate.swift */; };
 		E1B566CD1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */; };
 		E1B566CE1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */; };
 		E1B566CF1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */; };
@@ -114,6 +115,7 @@
 		E165E8EE1DD6250B00657E6C /* EntityDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityDescription.swift; sourceTree = "<group>"; };
 		E165E8F01DD9A6F800657E6C /* SortDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortDescriptor.swift; sourceTree = "<group>"; };
 		E18F885B1DE8993F004576CC /* SummaryListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListCollectionViewController.swift; sourceTree = "<group>"; };
+		E18F885F1DEE0FD2004576CC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B566BB1DCB8B0E00CCE3F3 /* SummaryListDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataManager.swift; sourceTree = "<group>"; };
 		E1B566BC1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListDataStoreConvenience.swift; sourceTree = "<group>"; };
 		E1B566BD1DCB8B0E00CCE3F3 /* SummaryListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryListInteractor.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				5E0B5B651DB5D1CD00565BAC /* AppDelegate.h */,
 				5E0B5B661DB5D1CD00565BAC /* AppDelegate.m */,
+				E18F885F1DEE0FD2004576CC /* AppDelegate.swift */,
 				5E0B5B811DB5D27900565BAC /* AppDependencies.swift */,
 				5E0B5B9D1DB609E000565BAC /* Helpers */,
 				5E0B5B9E1DB609E000565BAC /* Model */,
@@ -660,6 +663,7 @@
 				5E0B5BBE1DB6129500565BAC /* ManagedPrice.swift in Sources */,
 				5E0B5B821DB5D27900565BAC /* AppDependencies.swift in Sources */,
 				5E0B5BA71DB609E000565BAC /* NetworkManager.swift in Sources */,
+				E18F88601DEE0FD2004576CC /* AppDelegate.swift in Sources */,
 				E1B566CE1DCB8B0E00CCE3F3 /* SummaryListDataStoreConvenience.swift in Sources */,
 				5E6B7BFB1DB9186E00B14365 /* Utility.swift in Sources */,
 				E1DA6AAE1DDDE0AC00097609 /* ShortcutItem.swift in Sources */,
