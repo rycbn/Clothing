@@ -28,6 +28,7 @@ class SummaryListCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = .clothing
         self.configureApplicationShortcutItem()
         self.configureDataSourceDelegate()
         self.configure3DTouch()
